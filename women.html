@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>blanco.agency - Women</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      font-family: 'Playfair Display', serif;
+      overflow-x: hidden;
+    }
+
+    body {
+      background-color: #000;
+      color: #fff;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 200;
+      backdrop-filter: blur(10px);
+    }
+
+    .logo {
+      font-size: 26px;
+      font-weight: bold;
+      color: #f2ebc6;
+      letter-spacing: 2px;
+    }
+
+    .navbar {
+      display: flex;
+    }
+
+    .navbar a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: #f5f5f5;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    .navbar a:hover {
+      color: #ebead6;
+    }
+
+    .menu-btn {
+      display: none;
+      font-size: 26px;
+      color: #f5f5f5;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .menu-btn.active {
+      transform: rotate(90deg);
+    }
+
+    /* Category Selection Styles */
+    .category-selection {
+      padding: 120px 40px 30px;
+      text-align: center;
+    }
+
+    .category-title {
+      font-size: 36px;
+      margin-bottom: 40px;
+      color: #f2ebc6;
+    }
+
+    .category-options {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-bottom: 40px;
+    }
+
+    .category-option {
+      position: relative;
+      width: 45%;
+      max-width: 500px;
+      cursor: pointer;
+      border-radius: 10px;
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
+
+    .category-option:hover {
+      transform: scale(1.03);
+    }
+
+    .category-image {
+      width: 100%;
+      
+      object-fit: cover;
+      display: block;
+    }
+
+    .category-label {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+      padding: 20px;
+      color: white;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    /* Gallery Styles */
+    .gallery-container {
+      padding: 40px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 30px;
+      display: none; /* Initially hidden */
+    }
+
+    .gallery-container.active {
+      display: grid;
+    }
+
+    .model-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 10px;
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+
+    .model-card:hover {
+      transform: scale(1.03);
+    }
+
+    .model-image {
+      width: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .model-info {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+      padding: 20px;
+      color: white;
+    }
+
+    .model-name {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    .model-measurements {
+      font-size: 16px;
+      opacity: 0.9;
+    }
+
+    .back-button {
+      display: block;
+      margin: 20px auto;
+      padding: 10px 25px;
+      background-color: rgba(255, 255, 255, 0.1);
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-family: 'Playfair Display', serif;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .back-button:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    /* Mobile Sidebar Styles */
+    .mobile-sidebar {
+      position: fixed;
+      top: 0;
+      right: -300px;
+      width: 280px;
+      height: 100%;
+      background-color: rgba(17, 17, 17, 0.95);
+      padding: 80px 30px 30px;
+      transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 999;
+      backdrop-filter: blur(10px);
+      overflow-y: auto;
+    }
+
+    .mobile-sidebar.open {
+      right: 0;
+    }
+
+    .mobile-sidebar a {
+      display: block;
+      margin: 20px 0;
+      color: #fff;
+      text-decoration: none;
+      font-size: 18px;
+      padding: 10px 15px;
+      border-radius: 8px;
+      transition: all 0.3s;
+    }
+
+    .mobile-sidebar a:hover {
+      background-color: rgba(64, 0, 0, 0.3);
+      padding-left: 20px;
+    }
+
+    .mobile-sidebar .social-links {
+      margin-top: 50px;
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+    }
+
+    .mobile-sidebar .social-links a {
+      color: white;
+      font-size: 22px;
+      margin: 0;
+      padding: 0;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .mobile-sidebar .social-links a:hover {
+      background-color: rgba(64, 0, 0, 0.5);
+      transform: scale(1.1);
+    }
+
+    .close-sidebar {
+      position: absolute;
+      top: 25px;
+      right: 25px;
+      font-size: 24px;
+      color: white;
+      cursor: pointer;
+      transition: transform 0.3s;
+      background: none;
+      border: none;
+    }
+
+    .close-sidebar:hover {
+      transform: rotate(90deg);
+      color: #f2ebc6;
+    }
+
+    @media (max-width: 768px) {
+      .navbar {
+        display: none;
+      }
+
+      .menu-btn {
+        display: block;
+      }
+
+      .category-selection {
+        padding: 100px 20px 20px;
+      }
+
+      .category-options {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+      }
+
+      .category-option {
+        width: 100%;
+      }
+
+      .gallery-container {
+        padding: 20px;
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (min-width: 769px) {
+      .mobile-sidebar {
+        display: none;
+      }
+      
+      .menu-btn {
+        display: none;
+      }
+      /* Footer Styles */
+.site-footer {
+  background: rgba(0, 0, 0, 0.8);
+  padding: 30px 0;
+  text-align: center;
+  position: relative;
+  z-index: 10;
+  backdrop-filter: blur(5px);
+  border-top: 1px solid rgba(64, 0, 0, 0.5);
+  margin-top: 50px;
+}
+
+.footer-nav {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 25px;
+  flex-wrap: wrap;
+}
+
+.footer-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 12px 25px;
+  background: rgba(64, 0, 0, 0.3);
+  color: #f2ebc6;
+  text-decoration: none;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(242, 235, 198, 0.2);
+  font-size: 16px;
+}
+
+.footer-btn i {
+  margin-right: 10px;
+  font-size: 18px;
+}
+
+.footer-btn:hover {
+  background: rgba(64, 0, 0, 0.5);
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.copyright-section {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.copyright-text {
+  margin-bottom: 10px;
+}
+
+.credits {
+  font-size: 13px;
+}
+
+.credits i {
+  color: #ff3366;
+  margin: 0 5px;
+}
+
+.credits span {
+  color: #f2ebc6;
+  font-weight: bold;
+}
+
+/* Responsive Footer */
+@media (max-width: 768px) {
+  .footer-nav {
+    gap: 15px;
+  }
+  
+  .footer-btn {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+  
+  .copyright-section {
+    font-size: 13px;
+  }
+}
+.creator-link {
+  color: #3498db; /* اللون الأزرق */
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  margin-left: 5px;
+}
+
+.creator-link:hover {
+  color: #2980b9; /* لون أزرق داكن عند التمرير */
+  text-decoration: underline;
+}
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">B L A N C O</div>
+    <div class="navbar">
+      <a href="index.html">HOME</a>
+      <a href="women.html">WOMEN</a>
+      <a href="men.html">MEN</a>
+      <a href="#">PRODUCTION</a>
+      <a href="about-us.html">ABOUT</a>
+      <a href="contact-us.html">CONTACT</a>
+    </div>
+    <div class="menu-btn" id="menuBtn">
+      <i class="fas fa-bars"></i>
+    </div>
+  </header>
+    
+  <!-- Mobile Sidebar -->
+  <div class="mobile-sidebar" id="mobileSidebar">
+    <button class="close-sidebar" id="closeSidebar">
+      <i class="fas fa-times"></i>
+    </button>
+    
+    <a href="index.html">HOME</a>
+      <a href="women.html">WOMEN</a>
+      <a href="men.html">MEN</a>
+      <a href="#">PRODUCTION</a>
+      <a href="about-us.html">ABOUT</a>
+      <a href="contact-us.html">CONTACT</a>
+    
+    <div class="social-links">
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-tiktok"></i></a>
+      <a href="#"><i class="fab fa-facebook-f"></i></a>
+      <a href="#"><i class="fab fa-youtube"></i></a>
+    </div>
+  </div>
+
+  <!-- Category Selection Section -->
+  <div class="category-selection" id="categorySelection">
+    <h1 class="category-title">WOMEN MODELS</h1>
+    <div class="category-options">
+      <div class="category-option" onclick="showCategory('girls')">
+        <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Girls" class="category-image">
+        <div class="category-label">GIRLS</div>
+      </div>
+      <div class="category-option" onclick="showCategory('hijabi')">
+        <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Hijabi Girls" class="category-image">
+        <div class="category-label">HIJABI GIRLS</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Girls Gallery Section -->
+  <div class="gallery-container" id="girlsGallery">
+    <!-- Model 1 -->
+    <div class="model-card" onclick="window.location.href='girl1.html'">
+      <img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Model 1" class="model-image">
+      <div class="model-info">
+        <div class="model-name">EMMA WATSON</div>
+        <div class="model-measurements">Height: 175cm | Bust: 86cm | Waist: 60cm</div>
+      </div>
+    </div>
+
+    <!-- Model 2 -->
+    <div class="model-card" onclick="window.location.href='girl2.html'">
+      <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Model 2" class="model-image">
+      <div class="model-info">
+        <div class="model-name">SOPHIA LEE</div>
+        <div class="model-measurements">Height: 178cm | Bust: 88cm | Waist: 62cm</div>
+      </div>
+    </div>
+
+    <!-- Model 3 -->
+    <div class="model-card" onclick="window.location.href='girl3.html'">
+      <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Model 3" class="model-image">
+      <div class="model-info">
+        <div class="model-name">OLIVIA MARTINEZ</div>
+        <div class="model-measurements">Height: 172cm | Bust: 84cm | Waist: 58cm</div>
+      </div>
+    </div>
+
+    <!-- Model 4 -->
+    <div class="model-card" onclick="window.location.href='girl4.html'">
+      <img src="https://images.unsplash.com/photo-1524502397800-2eeaad7c3fe5?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Model 4" class="model-image">
+      <div class="model-info">
+        <div class="model-name">AVA JOHNSON</div>
+        <div class="model-measurements">Height: 180cm | Bust: 90cm | Waist: 64cm</div>
+      </div>
+    </div>
+
+    <!-- Model 5 -->
+    <div class="model-card" onclick="window.location.href='girl5.html'">
+      <img src="https://images.unsplash.com/photo-1545912452-8aea7e25a3d3?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Model 5" class="model-image">
+      <div class="model-info">
+        <div class="model-name">ISABELLA SMITH</div>
+        <div class="model-measurements">Height: 176cm | Bust: 87cm | Waist: 61cm</div>
+      </div>
+    </div>
+
+    <!-- Model 6 -->
+    <div class="model-card" onclick="window.location.href='girl6.html'">
+      <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Model 6" class="model-image">
+      <div class="model-info">
+        <div class="model-name">MIA BROWN</div>
+        <div class="model-measurements">Height: 174cm | Bust: 85cm | Waist: 59cm</div>
+      </div>
+    </div>
+
+    <button class="back-button" onclick="backToCategories()">Back to Categories</button>
+  </div>
+
+  <!-- Hijabi Girls Gallery Section -->
+  <div class="gallery-container" id="hijabiGallery">
+    <!-- Model 1 -->
+    <div class="model-card" onclick="window.location.href='hijabi1.html'">
+      <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Hijabi Model 1" class="model-image">
+      <div class="model-info">
+        <div class="model-name">AMINA KHAN</div>
+        <div class="model-measurements">Height: 170cm | Bust: 84cm | Waist: 62cm</div>
+      </div>
+    </div>
+
+    <!-- Model 2 -->
+    <div class="model-card" onclick="window.location.href='hijabi2.html'">
+      <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Hijabi Model 2" class="model-image">
+      <div class="model-info">
+        <div class="model-name">FATIMA AHMED</div>
+        <div class="model-measurements">Height: 168cm | Bust: 82cm | Waist: 60cm</div>
+      </div>
+    </div>
+
+    <!-- Model 3 -->
+    <div class="model-card" onclick="window.location.href='hijabi3.html'">
+      <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Hijabi Model 3" class="model-image">
+      <div class="model-info">
+        <div class="model-name">ZAINAB ALI</div>
+        <div class="model-measurements">Height: 172cm | Bust: 86cm | Waist: 64cm</div>
+      </div>
+    </div>
+
+    <!-- Model 4 -->
+    <div class="model-card" onclick="window.location.href='hijabi4.html'">
+      <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Hijabi Model 4" class="model-image">
+      <div class="model-info">
+        <div class="model-name">LEILA HASSAN</div>
+        <div class="model-measurements">Height: 175cm | Bust: 88cm | Waist: 66cm</div>
+      </div>
+    </div>
+
+    <!-- Model 5 -->
+    <div class="model-card" onclick="window.location.href='hijabi5.html'">
+      <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Hijabi Model 5" class="model-image">
+      <div class="model-info">
+        <div class="model-name">YASMIN OMAR</div>
+        <div class="model-measurements">Height: 169cm | Bust: 83cm | Waist: 61cm</div>
+      </div>
+    </div>
+
+    <!-- Model 6 -->
+    <div class="model-card" onclick="window.location.href='hijabi6.html'">
+      <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Hijabi Model 6" class="model-image">
+      <div class="model-info">
+        <div class="model-name">NOUR ABDULLAH</div>
+        <div class="model-measurements">Height: 173cm | Bust: 85cm | Waist: 63cm</div>
+      </div>
+    </div>
+
+    <button class="back-button" onclick="backToCategories()">Back to Categories</button>
+  </div>
+
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init();
+
+    // DOM elements
+    const menuBtn = document.getElementById('menuBtn');
+    const closeSidebar = document.getElementById('closeSidebar');
+    const mobileSidebar = document.getElementById('mobileSidebar');
+    const categorySelection = document.getElementById('categorySelection');
+    const girlsGallery = document.getElementById('girlsGallery');
+    const hijabiGallery = document.getElementById('hijabiGallery');
+
+    // Open/close sidebar
+    menuBtn.addEventListener('click', function() {
+      mobileSidebar.classList.add('open');
+      menuBtn.classList.add('active');
+    });
+
+    closeSidebar.addEventListener('click', function() {
+      mobileSidebar.classList.remove('open');
+      menuBtn.classList.remove('active');
+    });
+
+    // Close sidebar when clicking outside
+    document.addEventListener('click', function(event) {
+      if (!mobileSidebar.contains(event.target) && event.target !== menuBtn && !menuBtn.contains(event.target)) {
+        mobileSidebar.classList.remove('open');
+        menuBtn.classList.remove('active');
+      }
+    });
+
+    // Show selected category gallery
+    function showCategory(category) {
+      categorySelection.style.display = 'none';
+      
+      if (category === 'girls') {
+        girlsGallery.classList.add('active');
+      } else if (category === 'hijabi') {
+        hijabiGallery.classList.add('active');
+      }
+    }
+
+    // Back to categories view
+    function backToCategories() {
+      girlsGallery.classList.remove('active');
+      hijabiGallery.classList.remove('active');
+      categorySelection.style.display = 'block';
+    }
+  </script>
+<footer class="site-footer">
+  <div class="footer-nav">
+    <a href="terms-and-conditions.html" class="footer-btn">
+      <i class="fas fa-file-contract"></i>
+      <span>Terms & Conditions</span>
+    </a>
+    <a href="contact-us.html" class="footer-btn">
+      <i class="fas fa-envelope"></i>
+      <span>Contact Us</span>
+    </a>
+    <a href="about-us.html" class="footer-btn">
+      <i class="fas fa-envelope"></i>
+      <span>About Us</span>
+    </a>
+  </div>
+  
+  <div class="copyright-section">
+    <p class="copyright-text">
+      &copy; 2025 BLANCO Agency. All Rights Reserved.
+    </p>
+    <p class="credits">
+      Created with <i class="fas fa-heart"></i> by 
+      <a href="https://menasamuel2010.github.io/MISA-Technolgy./" class="creator-link">MISA Technolgy</a>
+    </div>
+      with <i class=""></i> 
+      <a href="https://www.instagram.com/mina_samuel_2010/" class="creator-link">Mina Samuel</a>
+      
+    </p>
+  </div>
+</footer>
+</body>
+</html>

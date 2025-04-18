@@ -231,20 +231,116 @@
       .menu-btn {
         display: none;
       }
+      /* Footer Styles */
+.site-footer {
+  background: rgba(0, 0, 0, 0.8);
+  padding: 30px 0;
+  text-align: center;
+  position: relative;
+  z-index: 10;
+  backdrop-filter: blur(5px);
+  border-top: 1px solid rgba(64, 0, 0, 0.5);
+  margin-top: 50px;
+}
+
+.footer-nav {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 25px;
+  flex-wrap: wrap;
+}
+
+.footer-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 12px 25px;
+  background: rgba(64, 0, 0, 0.3);
+  color: #f2ebc6;
+  text-decoration: none;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(242, 235, 198, 0.2);
+  font-size: 16px;
+}
+
+.footer-btn i {
+  margin-right: 10px;
+  font-size: 18px;
+}
+
+.footer-btn:hover {
+  background: rgba(64, 0, 0, 0.5);
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.copyright-section {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.copyright-text {
+  margin-bottom: 10px;
+}
+
+.credits {
+  font-size: 13px;
+}
+
+.credits i {
+  color: #ff3366;
+  margin: 0 5px;
+}
+
+.credits span {
+  color: #f2ebc6;
+  font-weight: bold;
+}
+
+/* Responsive Footer */
+@media (max-width: 768px) {
+  .footer-nav {
+    gap: 15px;
+  }
+  
+  .footer-btn {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+  
+  .copyright-section {
+    font-size: 13px;
+  }
+}
+.creator-link {
+  color: #3498db; /* اللون الأزرق */
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  margin-left: 5px;
+}
+
+.creator-link:hover {
+  color: #2980b9; /* لون أزرق داكن عند التمرير */
+  text-decoration: underline;
+}
     }
   </style>
 </head>
 <body>
 
   <header>
-    <div class="logo">blanco.agency</div>
+    <div class="logo">B L A N C O</div>
     <div class="navbar">
-      <a href="index.html">Home</a>
-      <a href="#">Women</a>
-      <a href="men.html">Men</a>
-      <a href="#">Production</a>
-      <a href="#">About</a>
-      <a href="#">Contact</a>
+      <a href="index.html">HOME</a>
+      <a href="women.html">WOMEN</a>
+      <a href="men.html">MEN</a>
+      <a href="#">PRODUCTION</a>
+      <a href="about-us.html">ABOUT</a>
+      <a href="contact-us.html">CONTACT</a>
+    </div>
     </div>
     <div class="menu-btn" id="menuBtn">
       <i class="fas fa-bars"></i>
@@ -257,12 +353,12 @@
       <i class="fas fa-times"></i>
     </button>
     
-    <a href="index.html">Home</a>
-    <a href="#">Women</a>
-    <a href="men.html">Men</a>
-    <a href="#">Production</a>
-    <a href="#">About</a>
-    <a href="#">Contact</a>
+    <a href="index.html">HOME</a>
+      <a href="women.html">WOMEN</a>
+      <a href="men.html">MEN</a>
+      <a href="#">PRODUCTION</a>
+      <a href="about-us.html">ABOUT</a>
+      <a href="contact-us.html">CONTACT</a>
     
     <div class="social-links">
       <a href="#"><i class="fab fa-twitter"></i></a>
@@ -330,6 +426,35 @@
       });
     });
   </script>
-
+<footer class="site-footer">
+  <div class="footer-nav">
+    <a href="terms-and-conditions.html" class="footer-btn">
+      <i class="fas fa-file-contract"></i>
+      <span>Terms & Conditions</span>
+    </a>
+    <a href="contact-us.html" class="footer-btn">
+      <i class="fas fa-envelope"></i>
+      <span>Contact Us</span>
+    </a>
+    <a href="about-us.html" class="footer-btn">
+      <i class="fas fa-envelope"></i>
+      <span>About Us</span>
+    </a>
+  </div>
+  
+  <div class="copyright-section">
+    <p class="copyright-text">
+      &copy; 2025 BLANCO Agency. All Rights Reserved.
+    </p>
+    <p class="credits">
+      Created with <i class="fas fa-heart"></i> by 
+      <a href="https://menasamuel2010.github.io/MISA-Technolgy./" class="creator-link">MISA Technolgy</a>
+    </div>
+      with <i class=""></i> 
+      <a href="https://www.instagram.com/mina_samuel_2010/" class="creator-link">Mina Samuel</a>
+      
+    </p>
+  </div>
+</footer>
 </body>
 </html>

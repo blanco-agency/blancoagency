@@ -320,108 +320,179 @@
       .menu-btn {
         display: none;
       }
+      /* Footer Styles */
+.site-footer {
+  background: rgba(0, 0, 0, 0.8);
+  padding: 30px 0;
+  text-align: center;
+  position: relative;
+  z-index: 10;
+  backdrop-filter: blur(5px);
+  border-top: 1px solid rgba(64, 0, 0, 0.5);
+  margin-top: 50px;
+}
+
+.footer-nav {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 25px;
+  flex-wrap: wrap;
+}
+
+.footer-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 12px 25px;
+  background: rgba(64, 0, 0, 0.3);
+  color: #f2ebc6;
+  text-decoration: none;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(242, 235, 198, 0.2);
+  font-size: 16px;
+}
+
+.footer-btn i {
+  margin-right: 10px;
+  font-size: 18px;
+}
+
+.footer-btn:hover {
+  background: rgba(64, 0, 0, 0.5);
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.copyright-section {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.copyright-text {
+  margin-bottom: 10px;
+}
+
+.credits {
+  font-size: 13px;
+}
+
+.credits i {
+  color: #ff3366;
+  margin: 0 5px;
+}
+
+.credits span {
+  color: #f2ebc6;
+  font-weight: bold;
+}
+
+/* Responsive Footer */
+@media (max-width: 768px) {
+  .footer-nav {
+    gap: 15px;
+  }
+  
+  .footer-btn {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+  
+  .copyright-section {
+    font-size: 13px;
+  }
+}
+.creator-link {
+  color: #3498db; /* اللون الأزرق */
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  margin-left: 5px;
+}
+
+.creator-link:hover {
+  color: #2980b9; /* لون أزرق داكن عند التمرير */
+  text-decoration: underline;
+}
     }
   </style>
 </head>
 <body>
 
   <header>
-    <div class="logo">blanco.agency</div>
+    <div class="logo">B L A N C O</div>
     <div class="navbar">
-      <a href="index.html">Home</a>
-      <a href="#">Women</a>
-      <a href="men.html">Men</a>
-      <a href="#">Production</a>
-      <a href="#">About</a>
-      <a href="#">Contact</a>
+      <a href="index.html">HOME</a>
+      <a href="women.html">WOMEN</a>
+      <a href="men.html">MEN</a>
+      <a href="#">PRODUCTION</a>
+      <a href="about-us.html">ABOUT</a>
+      <a href="contact-us.html">CONTACT</a>
+    </div>
     </div>
     <div class="menu-btn" id="menuBtn">
       <i class="fas fa-bars"></i>
     </div>
   </header>
     
-  <!-- الشريط الجانبي للهاتف فقط -->
   <div class="mobile-sidebar" id="mobileSidebar">
     <button class="close-sidebar" id="closeSidebar">
       <i class="fas fa-times"></i>
     </button>
     
-    <a href="index.html">Home</a>
-    <a href="#">Women</a>
-    <a href="men.html">Men</a>
-    <a href="#">Production</a>
-    <a href="#">About</a>
-    <a href="#">Contact</a>
+    <a href="index.html">HOME</a>
+      <a href="women.html">WOMEN</a>
+      <a href="men.html">MEN</a>
+      <a href="#">PRODUCTION</a>
+      <a href="about-us.html">ABOUT</a>
+      <a href="contact-us.html">CONTACT</a>
     
     <div class="social-links">
-      <a href="#"><i class="fab fa-twitter"></i></a>
       <a href="#"><i class="fab fa-instagram"></i></a>
       <a href="#"><i class="fab fa-tiktok"></i></a>
       <a href="#"><i class="fab fa-facebook-f"></i></a>
-      <a href="#"><i class="fab fa-youtube"></i></a>
     </div>
   </div>
 
   <div class="booking-container">
     <div class="background-image"></div>
     
-    <div class="booking-content">
+    <form id="bookingForm" action="https://formsubmit.co/your-email@example.com" method="POST" class="booking-content">
       <!-- Section 1: Model Information -->
       <div class="form-section active" id="section1">
         <h2 class="booking-title">BOOK YOUR MODEL</h2>
         
         <div class="form-group">
           <label for="modelName" class="required">Model Name</label>
-          <input type="text" id="modelName" placeholder="Enter model name" required>
+          <input type="text" id="modelName" name="Model Name" placeholder="Enter model name" required>
         </div>
         
         <div class="form-row">
           <div class="form-group">
             <label for="brandName" class="required">Brand name</label>
-            <input type="text" id="brandName" placeholder="Enter brand name" required>
+            <input type="text" id="brandName" name="Brand Name" placeholder="Enter brand name" required>
           </div>
-          <div class="form-group">
-            <label for="brandLink">Link</label>
-            <input type="text" id="brandLink" placeholder="Enter brand link">
-          </div>
-        </div>
-        
-        <div class="form-row">
           <div class="form-group">
             <label for="photographer" class="required">Photographer</label>
-            <input type="text" id="photographer" placeholder="Enter photographer name" required>
-          </div>
-          <div class="form-group">
-            <label for="photographerLink">Link</label>
-            <input type="text" id="photographerLink" placeholder="Enter photographer link">
+            <input type="text" id="photographer" name="Photographer" placeholder="Enter photographer name" required>
           </div>
         </div>
         
         <div class="form-row">
           <div class="form-group">
             <label for="stylist">Stylist</label>
-            <input type="text" id="stylist" placeholder="Enter stylist name">
+            <input type="text" id="stylist" name="Stylist" placeholder="Enter stylist name">
           </div>
-          <div class="form-group">
-            <label for="stylistLink">Link</label>
-            <input type="text" id="stylistLink" placeholder="Enter stylist link">
-          </div>
-        </div>
-        
-        <div class="form-row">
           <div class="form-group">
             <label for="makeupArtist">Makeup Artist</label>
-            <input type="text" id="makeupArtist" placeholder="Enter makeup artist name">
-          </div>
-          <div class="form-group">
-            <label for="makeupLink">Link</label>
-            <input type="text" id="makeupLink" placeholder="Enter makeup artist link">
+            <input type="text" id="makeupArtist" name="Makeup Artist" placeholder="Enter makeup artist name">
           </div>
         </div>
         
         <div class="form-actions">
-          <div></div> <!-- Empty div for spacing -->
-          <button class="form-btn btn-filled" onclick="nextSection(1)">Next</button>
+          <div></div>
+          <button type="button" class="form-btn btn-filled" onclick="nextSection(1)">Next</button>
         </div>
       </div>
       
@@ -432,11 +503,11 @@
         <div class="form-row">
           <div class="form-group">
             <label for="budget" class="required">Model Budget</label>
-            <input type="number" id="budget" placeholder="Enter a number" required>
+            <input type="number" id="budget" name="Budget" placeholder="Enter a number" required>
           </div>
           <div class="form-group">
             <label for="currency" class="required">Currency</label>
-            <select id="currency" required>
+            <select id="currency" name="Currency" required>
               <option value="EGP">EGP</option>
               <option value="USD">USD</option>
               <option value="EUR">EUR</option>
@@ -449,15 +520,15 @@
           <label class="required">Shooting Hours</label>
           <div class="radio-group">
             <div class="radio-option">
-              <input type="radio" id="halfDay" name="shootingHours" value="4" required>
+              <input type="radio" id="halfDay" name="Shooting Hours" value="4" required>
               <label for="halfDay">Half Day 4 Hours</label>
             </div>
             <div class="radio-option">
-              <input type="radio" id="fullDay" name="shootingHours" value="8">
+              <input type="radio" id="fullDay" name="Shooting Hours" value="8">
               <label for="fullDay">Full Day 8 Hours</label>
             </div>
             <div class="radio-option">
-              <input type="radio" id="otherHours" name="shootingHours" value="other">
+              <input type="radio" id="otherHours" name="Shooting Hours" value="other">
               <label for="otherHours">Other</label>
             </div>
           </div>
@@ -465,17 +536,17 @@
         
         <div class="form-group">
           <label for="callTime" class="required">Call Time for the Model</label>
-          <input type="time" id="callTime" required>
+          <input type="time" id="callTime" name="Call Time" required>
         </div>
         
         <div class="form-group">
           <label for="shootingDate" class="required">Location Date</label>
-          <input type="date" id="shootingDate" required>
+          <input type="date" id="shootingDate" name="Shooting Date" required>
         </div>
         
         <div class="form-actions">
-          <button class="form-btn btn-outlined" onclick="prevSection(2)">Back</button>
-          <button class="form-btn btn-filled" onclick="nextSection(2)">Next</button>
+          <button type="button" class="form-btn btn-outlined" onclick="prevSection(2)">Back</button>
+          <button type="button" class="form-btn btn-filled" onclick="nextSection(2)">Next</button>
         </div>
       </div>
       
@@ -486,18 +557,18 @@
         <div class="form-row">
           <div class="form-group">
             <label for="firstName" class="required">First Name</label>
-            <input type="text" id="firstName" placeholder="Enter first name" required>
+            <input type="text" id="firstName" name="First Name" placeholder="Enter first name" required>
           </div>
           <div class="form-group">
             <label for="lastName" class="required">Last Name</label>
-            <input type="text" id="lastName" placeholder="Enter last name" required>
+            <input type="text" id="lastName" name="Last Name" placeholder="Enter last name" required>
           </div>
         </div>
         
         <div class="form-row">
           <div class="form-group">
             <label for="countryCode" class="required">Code</label>
-            <select id="countryCode" required>
+            <select id="countryCode" name="Country Code" required>
               <option value="+20">+20 (Egypt)</option>
               <option value="+1">+1 (USA)</option>
               <option value="+44">+44 (UK)</option>
@@ -507,26 +578,26 @@
           </div>
           <div class="form-group">
             <label for="phone" class="required">Phone</label>
-            <input type="tel" id="phone" placeholder="Enter phone number" required>
+            <input type="tel" id="phone" name="Phone Number" placeholder="Enter phone number" required>
           </div>
         </div>
         
         <div class="form-group">
           <label for="email" class="required">Email</label>
-          <input type="email" id="email" placeholder="Enter email address" required>
+          <input type="email" id="email" name="Email" placeholder="Enter email address" required>
         </div>
         
         <div class="form-group">
           <label for="notes">Notes</label>
-          <textarea id="notes" placeholder="Any additional notes or requirements"></textarea>
+          <textarea id="notes" name="Additional Notes" placeholder="Any additional notes or requirements"></textarea>
         </div>
         
         <div class="form-actions">
-          <button class="form-btn btn-outlined" onclick="prevSection(3)">Back</button>
-          <button class="form-btn btn-filled" onclick="submitForm()">Submit</button>
+          <button type="button" class="form-btn btn-outlined" onclick="prevSection(3)">Back</button>
+          <button type="submit" class="form-btn btn-filled">Submit</button>
         </div>
       </div>
-    </div>
+    </form>
   </div>
 
   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
@@ -574,7 +645,6 @@
       });
       
       if (!isValid) {
-        alert('Please fill in all required fields');
         return;
       }
       
@@ -586,34 +656,36 @@
       document.getElementById(`section${currentSection}`).classList.remove('active');
       document.getElementById(`section${currentSection - 1}`).classList.add('active');
     }
-    
-    function submitForm() {
-      // Validate last section
-      let isValid = true;
-      const requiredInputs = document.getElementById('section3').querySelectorAll('[required]');
-      
-      requiredInputs.forEach(input => {
-        if (!input.value) {
-          input.style.borderColor = '#ff4d4d';
-          isValid = false;
-        } else {
-          input.style.borderColor = 'rgba(255, 255, 255, 0.3)';
-        }
-      });
-      
-      if (!isValid) {
-        alert('Please fill in all required fields');
-        return;
-      }
-      
-      // Here you would normally send the form data to a server
-      alert('Booking submitted successfully!');
-      // Reset form and go back to first section
-      document.getElementById('section3').classList.remove('active');
-      document.getElementById('section1').classList.add('active');
-      document.querySelector('form').reset();
-    }
   </script>
-
+<footer class="site-footer">
+  <div class="footer-nav">
+    <a href="terms-and-conditions.html" class="footer-btn">
+      <i class="fas fa-file-contract"></i>
+      <span>Terms & Conditions</span>
+    </a>
+    <a href="contact-us.html" class="footer-btn">
+      <i class="fas fa-envelope"></i>
+      <span>Contact Us</span>
+    </a>
+    <a href="about-us.html" class="footer-btn">
+      <i class="fas fa-envelope"></i>
+      <span>About Us</span>
+    </a>
+  </div>
+  
+  <div class="copyright-section">
+    <p class="copyright-text">
+      &copy; 2025 BLANCO Agency. All Rights Reserved.
+    </p>
+    <p class="credits">
+      Created with <i class="fas fa-heart"></i> by 
+      <a href="https://menasamuel2010.github.io/MISA-Technolgy./" class="creator-link">MISA Technolgy</a>
+    </div>
+      with <i class=""></i> 
+      <a href="https://www.instagram.com/mina_samuel_2010/" class="creator-link">Mina Samuel</a>
+      
+    </p>
+  </div>
+</footer>
 </body>
 </html>
