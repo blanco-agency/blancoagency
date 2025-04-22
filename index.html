@@ -115,13 +115,24 @@
     }
 
     main {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      height: 100vh;
-      position: relative;
-      padding: 0 50px;
-    }
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 100px 20px;
+  text-align: center;
+  position: relative;
+}
+
+@media (min-width: 769px) {
+  main {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 50px;
+    text-align: left;
+  }
+}
+
 
     .content {
       z-index: 2;
@@ -297,9 +308,8 @@
       }
     }
       
-      .menu-btn {
-        display: none;
-      }
+    
+
 
       .button-stack {
   display: flex;
