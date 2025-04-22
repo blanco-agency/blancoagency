@@ -317,14 +317,10 @@
         display: none;
       }
     }
-      .navbar {
-        display: flex;
-      }
+    
 
       
-      .menu-btn {
-        display: none;
-      }
+      
       /* Footer Styles */
 .site-footer {
   background: rgba(0, 0, 0, 0.8);
@@ -460,6 +456,7 @@
         margin-left: 3px;
         margin-right: 3px;
       }
+      
     }
   </style>
 </head>
@@ -468,18 +465,42 @@
   <header>
     <div class="logo">B L A N C O</div>
     <div class="navbar">
-      <a href="index.html">HOME</a>
-      <a href="women.html">WOMEN</a>
-      <a href="men.html">MEN</a>
-      <a href="#">PRODUCTION</a>
-      <a href="about-us.html">ABOUT</a>
-      <a href="contact-us.html">CONTACT</a>
+        <a href="index.html">HOME</a>
+        <a href="women.html">WOMEN</a>
+        <a href="men.html">MEN</a>
+        <a href="#">PRODUCTION</a>
+        <a href="about-us.html">ABOUT</a>
+        <a href="contact-us.html">CONTACT</a>
     </div>
     </div>
     <div class="menu-btn" id="menuBtn">
       <i class="fas fa-bars"></i>
     </div>
   </header>
+    
+  <!-- Mobile sidebar -->
+  <div class="mobile-sidebar" id="mobileSidebar">
+    <button class="close-sidebar" id="closeSidebar">
+      <i class="fas fa-times"></i>
+    </button>
+    
+    <a href="index.html">HOME</a>
+      <a href="women.html">WOMEN</a>
+      <a href="men.html">MEN</a>
+      <a href="#">PRODUCTION</a>
+      <a href="about-us.html">ABOUT</a>
+      <a href="contact-us.html">CONTACT</a>
+    
+    <div class="social-links">
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-tiktok"></i></a>
+      <a href="#"><i class="fab fa-facebook-f"></i></a>
+      <a href="#"><i class="fab fa-youtube"></i></a>
+    </div>
+  </div>
+</div>
+</div>
     
   <div class="mobile-sidebar" id="mobileSidebar">
     <button class="close-sidebar" id="closeSidebar">
@@ -503,9 +524,11 @@
   <div class="booking-container">
     <div class="background-image"></div>
     
-    <form id="bookingForm" action="https://formsubmit.co/your-email@example.com" method="POST" class="booking-content">
-      <!-- Section 1: Model Information -->
-      <div class="form-section active" id="section1">
+    <form action="https://formsubmit.co/blanco.agency.222@gmail.com" method="POST">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_next" value="https://blanco-agency.github.io/blancoagency/th.html">
+      <input type="hidden" name="_subject" value="New Shoot Production Request">
+      <input type="hidden" name="_template" value="table">
         <h2 class="booking-title">BOOK YOUR MODEL</h2>
         
         <div class="form-group">

@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thank You | Blanco Agency</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"/>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background-color: #000;
+      color: #f2ebc6;
+      font-family: 'Playfair Display', serif;
+      line-height: 1.8;
+      overflow-x: hidden;
+    }
+    
+    /* Animation */
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+    }
+    
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.1); opacity: 0.8; }
+    }
+    
+    @keyframes rotate {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    /* Background Image with Blur */
+    .background-image {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://k.top4top.io/p_3392ir7mv1.png') no-repeat center center/cover;
+      filter: blur(4px) brightness(90%) grayscale(5%);
+      opacity: 0.7;
+      z-index: 1;
+    }
+    
+    /* Header */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 200;
+      backdrop-filter: blur(10px);
+    }
+    .logo {
+      font-size: 26px;
+      font-weight: bold;
+      color: #f2ebc6;
+      letter-spacing: 2px;
+    }
+    
+    /* Main Content Container */
+    .thank-you-container {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 120px 30px 80px;
+      position: relative;
+      z-index: 2;
+      max-width: 900px;
+      margin: 0 auto;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-radius: 15px;
+      border: 1px solid #400000;
+    }
+    
+    /* Premium Heart Animation */
+    .heart-animation {
+      position: relative;
+      width: 140px;
+      height: 140px;
+      margin: 0 auto 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .heart-container {
+      position: relative;
+      width: 120px;
+      height: 120px;
+      animation: pulse 2s ease infinite;
+    }
+    
+    .heart-shape {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: #ff3366;
+      transform: rotate(45deg);
+      border-radius: 20%;
+      box-shadow: 0 0 40px rgba(255, 51, 102, 0.6);
+      transition: all 0.3s ease;
+    }
+    
+    .heart-shape:before,
+    .heart-shape:after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: #ff3366;
+      border-radius: 50%;
+      transition: all 0.3s ease;
+    }
+    
+    .heart-shape:before {
+      top: -50%;
+      left: 0;
+    }
+    
+    .heart-shape:after {
+      top: 0;
+      left: -50%;
+    }
+    
+    .heart-light {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: radial-gradient(circle at center, 
+        rgba(255,255,255,0.8) 0%, 
+        rgba(255,255,255,0) 70%);
+      transform: scale(0);
+      animation: lightPulse 2s ease infinite;
+      animation-delay: 0.3s;
+    }
+    
+    .heart-sparkles {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+    }
+    
+    .sparkle {
+      position: absolute;
+      background: white;
+      border-radius: 50%;
+      filter: blur(1px);
+      opacity: 0;
+    }
+    
+    .s1 {
+      width: 8px;
+      height: 8px;
+      top: 15%;
+      left: 30%;
+      animation: sparkle 2s ease infinite;
+    }
+    
+    .s2 {
+      width: 6px;
+      height: 6px;
+      top: 25%;
+      right: 20%;
+      animation: sparkle 2s ease infinite 0.2s;
+    }
+    
+    .s3 {
+      width: 5px;
+      height: 5px;
+      bottom: 15%;
+      left: 25%;
+      animation: sparkle 2s ease infinite 0.4s;
+    }
+    
+    .s4 {
+      width: 7px;
+      height: 7px;
+      bottom: 20%;
+      right: 30%;
+      animation: sparkle 2s ease infinite 0.6s;
+    }
+    
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+    
+    @keyframes lightPulse {
+      0%, 100% { transform: scale(0); opacity: 0; }
+      50% { transform: scale(1.2); opacity: 0.6; }
+    }
+    
+    @keyframes sparkle {
+      0%, 100% { transform: translateY(0) scale(0); opacity: 0; }
+      50% { transform: translateY(-15px) scale(1); opacity: 0.8; }
+    }
+    
+    /* Thank You Message */
+    .thank-you-message {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    .thank-you-message h1 {
+      font-size: 3.5rem;
+      margin-bottom: 25px;
+      background: linear-gradient(45deg, #f2ebc6, #fff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      position: relative;
+      display: inline-block;
+      letter-spacing: 1px;
+    }
+    
+    .thank-you-message h1:after {
+      content: '';
+      position: absolute;
+      bottom: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background: linear-gradient(90deg, #400000, #ff0000, #400000);
+      border-radius: 3px;
+    }
+    
+    .thank-you-message p {
+      font-size: 1.2rem;
+      margin-bottom: 40px;
+      line-height: 1.8;
+      color: #e6e6e6;
+    }
+    
+    /* Premium Button */
+    .premium-btn {
+      position: relative;
+      display: inline-block;
+      padding: 18px 45px;
+      background: transparent;
+      color: #f2ebc6;
+      border: 2px solid #400000;
+      font-size: 1.1rem;
+      font-family: 'Playfair Display', serif;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      overflow: hidden;
+      transition: all 0.5s ease;
+      z-index: 1;
+      cursor: pointer;
+      border-radius: 30px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    .premium-btn:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 0, 0, 0.1), transparent);
+      transition: all 0.7s ease;
+      z-index: -1;
+    }
+    
+    .premium-btn:hover {
+      color: #fff;
+      border-color: #ff0000;
+      box-shadow: 0 5px 25px rgba(255, 0, 0, 0.3);
+      transform: translateY(-3px);
+    }
+    
+    .premium-btn:hover:before {
+      left: 100%;
+    }
+    
+    .premium-btn:after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      width: 120%;
+      height: 300%;
+      background: radial-gradient(circle, rgba(64, 0, 0, 0.3), transparent 70%);
+      transition: all 0.5s ease;
+      z-index: -2;
+      border-radius: 50%;
+    }
+    
+    .premium-btn:hover:after {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 0;
+    }
+    
+    /* Floating Elements */
+    .floating-elements {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+  
+    .floating-element {
+      position: absolute;
+      background: rgba(64, 0, 0, 0.1);
+      border-radius: 50%;
+      animation: float 10s ease-in-out infinite;
+      filter: blur(1px);
+    }
+    
+    /* Footer */
+    .site-footer {
+      background: rgba(0, 0, 0, 0.8);
+      padding: 30px 0;
+      text-align: center;
+      position: relative;
+      z-index: 10;
+      backdrop-filter: blur(5px);
+      border-top: 1px solid rgba(64, 0, 0, 0.5);
+      margin-top: 50px;
+    }
+    
+    .copyright-section {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    
+    .copyright-text {
+      margin-bottom: 10px;
+    }
+    
+    .credits {
+      font-size: 13px;
+    }
+    
+    .credits i {
+      color: #ff3366;
+      margin: 0 5px;
+    }
+    
+    .creator-link {
+      color: #3498db;
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      margin-left: 5px;
+    }
+    
+    .creator-link:hover {
+      color: #2980b9;
+      text-decoration: underline;
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .thank-you-container {
+        padding: 100px 20px 60px;
+        margin: 20px;
+      }
+      
+      .thank-you-message h1 {
+        font-size: 2.5rem;
+      }
+      
+      .thank-you-message p {
+        font-size: 1rem;
+      }
+      
+      .heart-animation {
+        width: 120px;
+        height: 120px;
+      }
+      
+      .heart-container {
+        width: 100px;
+        height: 100px;
+      }
+      
+      .premium-btn {
+        padding: 15px 35px;
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="background-image"></div>
+  
+  
+ 
+
+  <div class="thank-you-container">
+    <div class="heart-animation">
+      <div class="heart-container">
+        <div class="heart-shape"></div>
+        <div class="heart-light"></div>
+        <div class="heart-sparkles">
+          <div class="sparkle s1"></div>
+          <div class="sparkle s2"></div>
+          <div class="sparkle s3"></div>
+          <div class="sparkle s4"></div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="thank-you-message">
+      <h1>Thank You!</h1>
+      <p>Thank you for contacting us. Your request will be processed as soon as possible, and we will contact you as soon as possible. Thank you very much.</p>
+      <a href="index.html" class="premium-btn">Return to Home</a>
+    </div>
+  </div>
+  
+  <div class="floating-elements" id="floatingElements"></div>
+  
+  
+
+  <script>
+    // Create premium floating elements
+    document.addEventListener('DOMContentLoaded', function() {
+      const container = document.getElementById('floatingElements');
+      const colors = [
+        'rgba(64, 0, 0, 0.15)',
+        'rgba(242, 235, 198, 0.1)',
+        'rgba(255, 0, 0, 0.1)',
+        'rgba(64, 0, 0, 0.2)'
+      ];
+      
+      for (let i = 0; i < 20; i++) {
+        const size = Math.random() * 60 + 10;
+        const posX = Math.random() * 100;
+        const posY = Math.random() * 100;
+        const delay = Math.random() * 5;
+        const duration = Math.random() * 10 + 10;
+        const color = colors[Math.floor(Math.random() * colors.length)];
+        const blur = Math.random() * 2 + 1;
+        
+        const element = document.createElement('div');
+        element.className = 'floating-element';
+        element.style.width = `${size}px`;
+        element.style.height = `${size}px`;
+        element.style.top = `${posY}%`;
+        element.style.left = `${posX}%`;
+        element.style.animationDelay = `${delay}s`;
+        element.style.animationDuration = `${duration}s`;
+        element.style.background = color;
+        element.style.filter = `blur(${blur}px)`;
+        
+        container.appendChild(element);
+      }
+    });
+  </script>
+</body>
+</html>
