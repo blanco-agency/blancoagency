@@ -36,9 +36,9 @@
     }
 
     .logo {
-      font-size: 26px;
+      font-size: 36px;
       font-weight: bold;
-      color: #f2ebc6;
+      color: #400000;
       letter-spacing: 2px;
     }
 
@@ -399,21 +399,21 @@
 }
 /* Footer Styles */
 .site-footer {
-  background: rgba(0, 0, 0, 0.8);
-  padding: 30px 0;
+  background: rgba(0, 0, 0, 0.9);
+  padding: 40px 0;
   text-align: center;
   position: relative;
   z-index: 10;
   backdrop-filter: blur(5px);
-  border-top: 1px solid rgba(64, 0, 0, 0.5);
-  margin-top: 50px;
+  border-top: 1px solid rgba(64, 0, 0, 0.3);
+  margin-top: 80px;
 }
 
 .footer-nav {
   display: flex;
   justify-content: center;
-  gap: 30px;
-  margin-bottom: 25px;
+  gap: 20px;
+  margin-bottom: 30px;
   flex-wrap: wrap;
 }
 
@@ -421,67 +421,79 @@
   display: inline-flex;
   align-items: center;
   padding: 12px 25px;
-  background: rgba(64, 0, 0, 0.3);
+  background: transparent;
   color: #f2ebc6;
   text-decoration: none;
   border-radius: 50px;
   transition: all 0.3s ease;
-  border: 1px solid rgba(242, 235, 198, 0.2);
   font-size: 16px;
+  border: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.footer-btn::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: #400000;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease;
+}
+
+.footer-btn:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
 }
 
 .footer-btn i {
   margin-right: 10px;
   font-size: 18px;
+  color: #400000;
 }
 
 .footer-btn:hover {
-  background: rgba(64, 0, 0, 0.5);
+  color: #fff;
   transform: translateY(-3px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.footer-btn:hover i {
+  color: #fff;
 }
 
 .copyright-section {
-  color: rgba(255, 255, 255, 0.7);
-  font-size: 14px;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 16px;
   line-height: 1.6;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 .copyright-text {
-  margin-bottom: 10px;
+  margin-bottom: 15px;
+  font-size: 18px;
 }
 
 .credits {
-  font-size: 13px;
+  font-size: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 5px;
 }
 
 .credits i {
-  color: #ff3366;
+  color: #400000;
   margin: 0 5px;
 }
 
-.credits span {
-  color: #f2ebc6;
-  font-weight: bold;
-}
-
-/* Responsive Footer */
-@media (max-width: 768px) {
-  .footer-nav {
-    gap: 15px;
-  }
-  
-  .footer-btn {
-    padding: 10px 20px;
-    font-size: 14px;
-  }
-  
-  .copyright-section {
-    font-size: 13px;
-  }
-}
 .creator-link {
-  color: #3498db; /* اللون الأزرق */
+  color: #f2ebc6;
   text-decoration: none;
   font-weight: bold;
   transition: all 0.3s ease;
@@ -489,51 +501,66 @@
 }
 
 .creator-link:hover {
-  color: #2980b9; /* لون أزرق داكن عند التمرير */
+  color: #400000;
   text-decoration: underline;
 }
 
+/* Responsive Footer */
 @media (max-width: 768px) {
-      .site-footer {
-        padding: 25px 15px;
-      }
-      
-      .footer-nav {
-        flex-direction: row;
-        justify-content: center;
-        gap: 15px;
-        flex-wrap: wrap;
-      }
-      
-      .footer-btn {
-        padding: 10px 20px;
-        font-size: 14px;
-        margin: 5px;
-      }
-      
-      .footer-btn i {
-        font-size: 16px;
-        margin-right: 8px;
-      }
-      
-      .copyright-section {
-        font-size: 12px;
-        padding: 0 10px;
-      }
-      
-      .credits {
-        font-size: 11px;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        align-items: center;
-      }
-      
-      .creator-link {
-        margin-left: 3px;
-        margin-right: 3px;
-      }
-    }
+  .site-footer {
+    padding: 30px 15px;
+  }
+  
+  .footer-nav {
+    gap: 12px;
+  }
+  
+  .footer-btn {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+  
+  .footer-btn i {
+    font-size: 16px;
+    margin-right: 8px;
+  }
+  
+  .copyright-section {
+    font-size: 14px;
+  }
+  
+  .copyright-text {
+    font-size: 16px;
+  margin-bottom: 10px;
+  }
+  
+  .credits {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-nav {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .footer-btn {
+    width: 100%;
+    max-width: 250px;
+    justify-content: center;
+  }
+  
+  .copyright-section {
+    font-size: 13px;
+  }
+  
+  .credits {
+    flex-direction: column;
+    gap: 5px;
+  }
+}
 
 </style>
 </link></head>
@@ -558,11 +585,12 @@
 <i class="fas fa-times"></i>
 </button>
 <a href="index.html">HOME</a>
-      <a href="women.html">WOMEN</a>
-      <a href="men.html">MEN</a>
-      <a href="#">PRODUCTION</a>
-      <a href="about-us.html">ABOUT</a>
-      <a href="contact-us.html">CONTACT</a>
+<a href="women.html">WOMEN</a>
+<a href="men.html">MEN</a>
+<a href="lifestyle.html">LIFE STYLE</a>
+<a href="#">PRODUCTION</a>
+<a href="about-us.html">ABOUT</a>
+<a href="contact-us.html">CONTACT</a>
 <div class="social-links">
 <a href="#"><i class="fab fa-instagram"></i></a>
 <a href="#"><i class="fab fa-tiktok"></i></a>
@@ -750,6 +778,16 @@
       });
     });
 
+    document.querySelector('.logo').addEventListener('click', function() {
+    window.location.href = 'index.html';
+  });
+  document.querySelector('.logo').addEventListener('click', function() {
+    this.style.opacity = '0.7'; // تأثير خفيف عند النقر
+    setTimeout(() => {
+      window.location.href = 'index.html';
+    }, 200); // تأخير 200 مللي ثانية لرؤية التأثير
+  });
+
     // عرض اسم الملف عند اختياره
     document.querySelectorAll('.upload-area input[type="file"]').forEach(input => {
       input.addEventListener('change', function() {
@@ -800,14 +838,7 @@
       <p class="copyright-text">
         &copy; 2025 BLANCO Agency. All Rights Reserved.
       </p>
-      <p class="credits">
-        Created with <i class="fas fa-heart"></i> by 
-        <a href="https://menasamuel2010.github.io/MISA-Technolgy./" class="creator-link">MISA Technolgy</a>
-      </div>
-        with <i class=""></i> 
-        <a href="https://www.instagram.com/mina_samuel_2010/" class="creator-link">Mina Samuel</a>
-        
-      </p>
+      
     </div>
   </footer>
 </body>

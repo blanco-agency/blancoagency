@@ -1,13 +1,15 @@
 
+
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Terms and Conditions | Blanco Agency</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"/>
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Terms and Conditions | Blanco Agency</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+<style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       background-color: #000;
@@ -28,22 +30,22 @@
       backdrop-filter: blur(10px);
     }
     /* Footer Styles */
-.site-footer {
-  background: rgba(0, 0, 0, 0.8);
-  padding: 30px 0;
+    .site-footer {
+  background: rgba(0, 0, 0, 0.9);
+  padding: 40px 0;
   text-align: center;
   position: relative;
   z-index: 10;
   backdrop-filter: blur(5px);
-  border-top: 1px solid rgba(64, 0, 0, 0.5);
-  margin-top: 50px;
+  border-top: 1px solid rgba(64, 0, 0, 0.3);
+  margin-top: 80px;
 }
 
 .footer-nav {
   display: flex;
   justify-content: center;
-  gap: 30px;
-  margin-bottom: 25px;
+  gap: 20px;
+  margin-bottom: 30px;
   flex-wrap: wrap;
 }
 
@@ -51,67 +53,79 @@
   display: inline-flex;
   align-items: center;
   padding: 12px 25px;
-  background: rgba(64, 0, 0, 0.3);
+  background: transparent;
   color: #f2ebc6;
   text-decoration: none;
   border-radius: 50px;
   transition: all 0.3s ease;
-  border: 1px solid rgba(242, 235, 198, 0.2);
   font-size: 16px;
+  border: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.footer-btn::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: #400000;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease;
+}
+
+.footer-btn:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
 }
 
 .footer-btn i {
   margin-right: 10px;
   font-size: 18px;
+  color: #400000;
 }
 
 .footer-btn:hover {
-  background: rgba(64, 0, 0, 0.5);
+  color: #fff;
   transform: translateY(-3px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.footer-btn:hover i {
+  color: #fff;
 }
 
 .copyright-section {
-  color: rgba(255, 255, 255, 0.7);
-  font-size: 14px;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 16px;
   line-height: 1.6;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 .copyright-text {
-  margin-bottom: 10px;
+  margin-bottom: 15px;
+  font-size: 18px;
 }
 
 .credits {
-  font-size: 13px;
+  font-size: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 5px;
 }
 
 .credits i {
-  color: #ff3366;
+  color: #400000;
   margin: 0 5px;
 }
 
-.credits span {
-  color: #f2ebc6;
-  font-weight: bold;
-}
-
-/* Responsive Footer */
-@media (max-width: 768px) {
-  .footer-nav {
-    gap: 15px;
-  }
-  
-  .footer-btn {
-    padding: 10px 20px;
-    font-size: 14px;
-  }
-  
-  .copyright-section {
-    font-size: 13px;
-  }
-}
 .creator-link {
-  color: #3498db; /* اللون الأزرق */
+  color: #f2ebc6;
   text-decoration: none;
   font-weight: bold;
   transition: all 0.3s ease;
@@ -119,13 +133,70 @@
 }
 
 .creator-link:hover {
-  color: #2980b9; /* لون أزرق داكن عند التمرير */
+  color: #400000;
   text-decoration: underline;
 }
-    .logo {
-      font-size: 26px;
+
+/* Responsive Footer */
+@media (max-width: 768px) {
+  .site-footer {
+    padding: 30px 15px;
+  }
+  
+  .footer-nav {
+    gap: 12px;
+  }
+  
+  .footer-btn {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+  
+  .footer-btn i {
+    font-size: 16px;
+    margin-right: 8px;
+  }
+  
+  .copyright-section {
+    font-size: 14px;
+  }
+  
+  .copyright-text {
+    font-size: 16px;
+  margin-bottom: 10px;
+  }
+  
+  .credits {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-nav {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .footer-btn {
+    width: 100%;
+    max-width: 250px;
+    justify-content: center;
+  }
+  
+  .copyright-section {
+    font-size: 13px;
+  }
+  
+  .credits {
+    flex-direction: column;
+    gap: 5px;
+  }
+}
+.logo {
+      font-size: 36px;
       font-weight: bold;
-      color: #f2ebc6;
+      color: #400000;
       letter-spacing: 2px;
     }
     .navbar {
@@ -168,6 +239,25 @@
       border-bottom: 1px solid #400000;
       padding-bottom: 5px;
     }
+
+    @media (max-width: 768px) {
+    header {
+      justify-content: center;
+      padding:40px;
+    }
+    
+    .logo {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    
+    .menu-btn {
+      position: fixed;
+      right: 40px;
+    }
+  }
+
     p, li {
       font-size: 17px;
       color: #e6e6e6;
@@ -233,155 +323,715 @@
         margin-right: 3px;
       }
     }
-  </style>
-</head>
+  
+
+/* Header & Mobile Styles From contact-us */
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background-color: #000;
+      color: #f2ebc6;
+      font-family: 'Playfair Display', serif;
+      line-height: 1.8;
+    }
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.1);
+      
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 200;
+      backdrop-filter: blur(10px);
+    }
+    .logo {
+      font-size: 36px;
+      font-weight: bold;
+      color: #400000;
+      letter-spacing: 2px;
+    }
+    .navbar {
+      display: flex;
+    }
+    .navbar a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: #f5f5f5;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+    .navbar a:hover {
+      color: #ebead6;
+    }
+    .container {
+      max-width: 900px;
+      margin: auto;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      padding: 120px 30px 50px;
+      border-radius: 15px;
+      border: 1px solid #400000;
+      position: relative;
+      z-index: 2;
+    }
+    h1 {
+      text-align: center;
+      font-size: 36px;
+      margin-bottom: 40px;
+      color: #f2ebc6;
+    }
+    h2 {
+      color: #fff;
+      font-size: 24px;
+      margin-top: 40px;
+      margin-bottom: 15px;
+      border-bottom: 1px solid #400000;
+      padding-bottom: 5px;
+    }
+    p, li {
+      font-size: 17px;
+      color: #e6e6e6;
+    }
+    ul {
+      margin-left: 25px;
+      list-style-type: disc;
+    }
+    .divider {
+      border: none;
+      border-top: 1px solid #400000;
+      margin: 40px 0;
+      opacity: 0.5;
+    }
+    .background-image {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://k.top4top.io/p_3392ir7mv1.png') no-repeat center center/cover;
+      filter: blur(4px) brightness(90%) grayscale(5%);
+      opacity: 0.7;
+      z-index: 1;
+    }
+    .intro-text {
+      font-size: 20px;
+      text-align: center;
+      margin-bottom: 40px;
+      font-style: italic;
+    }
+    .contact-method {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+    .contact-method i {
+      margin-right: 15px;
+      font-size: 20px;
+      color: #f2ebc6;
+      width: 30px;
+      text-align: center;
+    }
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin: 30px 0;
+    }
+    .social-links a {
+      color: #f2ebc6;
+      font-size: 24px;
+      transition: all 0.3s ease;
+    }
+    .social-links a:hover {
+      color: #fff;
+      transform: scale(1.1);
+    }
+    .contact-form {
+      margin-top: 40px;
+    }
+    .form-group {
+      margin-bottom: 20px;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 18px;
+      color: #fff;
+      position: relative;
+      padding-bottom: 5px;
+    }
+    .form-group label:after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 50px;
+      height: 2px;
+      background: #c29999e7;
+      transition: width 0.3s ease;
+    }
+    .form-group:hover label:after {
+      width: 70px;
+    }
+    .form-group input, 
+    .form-group textarea {
+      width: 100%;
+      padding: 12px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid #400000;
+      color: #f2ebc6;
+      font-family: 'Playfair Display', serif;
+      font-size: 16px;
+      border-radius: 5px;
+      transition: all 0.3s ease;
+    }
+    .form-group input:focus, 
+    .form-group textarea:focus {
+      outline: none;
+      border-color: #ffffff;
+      box-shadow: 0 0 0 2px rgba(255, 0, 0, 0.2);
+    }
+    .form-group textarea {
+      height: 150px;
+      resize: vertical;
+    }
+    .submit-btn {
+      background: #400000;
+      color: #f2ebc6;
+      border: none;
+      padding: 15px 30px;
+      font-size: 18px;
+      font-family: 'Playfair Display', serif;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border-radius: 5px;
+      display: block;
+      margin: 30px auto 0;
+    }
+    .submit-btn:hover {
+      background: #500000;
+      transform: translateY(-2px);
+    }
+    .symbol-divider {
+      text-align: center;
+      font-size: 24px;
+      margin: 30px 0;
+      color: #f2ebc6;
+      opacity: 0.5;
+    }
+    /* تنسيق متقدم لقائمة الاختيار */
+    .form-group select {
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      background: rgba(20, 20, 20, 0.8);
+      border: 1px solid #500000;
+      border-radius: 5px;
+      color: #f2ebc6;
+      font-family: 'Playfair Display', serif;
+      font-size: 16px;
+      padding: 12px 45px 12px 15px;
+      width: 100%;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23f2ebc6'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
+      background-repeat: no-repeat;
+      background-position: right 15px center;
+      background-size: 15px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    }
+    .form-group select:hover {
+      background-color: rgba(30, 30, 30, 0.9);
+      border-color: #600000;
+    }
+    .form-group select:focus {
+      outline: none;
+      border-color: #ff0000;
+      box-shadow: 0 0 0 2px rgba(255, 0, 0, 0.3);
+    }
+    .form-group select option {
+      background: rgba(10, 10, 10, 0.95);
+      color: #f2ebc6;
+      padding: 12px 15px;
+      border-bottom: 1px solid #300000;
+    }
+    /* Footer Styles */
+    .site-footer {
+  background: rgba(0, 0, 0, 0.9);
+  padding: 40px 0;
+  text-align: center;
+  position: relative;
+  z-index: 10;
+  backdrop-filter: blur(5px);
+  border-top: 1px solid rgba(64, 0, 0, 0.3);
+  margin-top: 80px;
+}
+
+.footer-nav {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
+
+.footer-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 12px 25px;
+  background: transparent;
+  color: #f2ebc6;
+  text-decoration: none;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+  font-size: 16px;
+  border: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.footer-btn::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: #400000;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease;
+}
+
+.footer-btn:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.footer-btn i {
+  margin-right: 10px;
+  font-size: 18px;
+  color: #400000;
+}
+
+.footer-btn:hover {
+  color: #fff;
+  transform: translateY(-3px);
+}
+
+.footer-btn:hover i {
+  color: #fff;
+}
+
+.copyright-section {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 16px;
+  line-height: 1.6;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.copyright-text {
+  margin-bottom: 15px;
+  font-size: 18px;
+}
+
+.credits {
+  font-size: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.credits i {
+  color: #400000;
+  margin: 0 5px;
+}
+
+.creator-link {
+  color: #f2ebc6;
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  margin-left: 5px;
+}
+
+.creator-link:hover {
+  color: #400000;
+  text-decoration: underline;
+}
+
+/* Responsive Footer */
+@media (max-width: 768px) {
+  .site-footer {
+    padding: 30px 15px;
+  }
+  
+  .footer-nav {
+    gap: 12px;
+  }
+  
+  .footer-btn {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+  
+  .footer-btn i {
+    font-size: 16px;
+    margin-right: 8px;
+  }
+  
+  .copyright-section {
+    font-size: 14px;
+  }
+  
+  .copyright-text {
+    font-size: 16px;
+  margin-bottom: 10px;
+  }
+  
+  .credits {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-nav {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .footer-btn {
+    width: 100%;
+    max-width: 250px;
+    justify-content: center;
+  }
+  
+  .copyright-section {
+    font-size: 13px;
+  }
+  
+  .credits {
+    flex-direction: column;
+    gap: 5px;
+  }
+}
+    /* Mobile Sidebar */
+    .mobile-sidebar {
+      position: fixed;
+      top: 0;
+      right: -300px;
+      width: 280px;
+      height: 100%;
+      background-color: rgba(17, 17, 17, 0.95);
+      padding: 80px 30px 30px;
+      transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 999;
+      backdrop-filter: blur(10px);
+      overflow-y: auto;
+    }
+    .mobile-sidebar.open {
+      right: 0;
+    }
+    .mobile-sidebar a {
+      display: block;
+      margin: 20px 0;
+      color: #fff;
+      text-decoration: none;
+      font-size: 18px;
+      padding: 10px 15px;
+      border-radius: 8px;
+      transition: all 0.3s;
+    }
+    .mobile-sidebar a:hover {
+      background-color: rgba(64, 0, 0, 0.3);
+      padding-left: 20px;
+    }
+    .mobile-sidebar .social-links {
+      margin-top: 50px;
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+    }
+    .mobile-sidebar .social-links a {
+      color: white;
+      font-size: 22px;
+      margin: 0;
+      padding: 0;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .mobile-sidebar .social-links a:hover {
+      background-color: rgba(64, 0, 0, 0.5);
+      transform: scale(1.1);
+    }
+    .close-sidebar {
+      position: absolute;
+      top: 25px;
+      right: 25px;
+      font-size: 24px;
+      color: white;
+      cursor: pointer;
+      transition: transform 0.3s;
+      background: none;
+      border: none;
+    }
+    .close-sidebar:hover {
+      transform: rotate(90deg);
+      color: #f2ebc6;
+    }
+    .menu-btn {
+      display: none;
+      color: #f2ebc6;
+      font-size: 24px;
+      cursor: pointer;
+    }
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      .menu-btn {
+        display: block;
+      }
+      .navbar {
+        display: none;
+      }
+      .site-footer {
+        padding: 25px 15px;
+      }
+      .footer-nav {
+        flex-direction: row;
+        justify-content: center;
+        gap: 15px;
+        flex-wrap: wrap;
+      }
+      .footer-btn {
+        padding: 10px 20px;
+        font-size: 14px;
+        margin: 5px;
+      }
+      .footer-btn i {
+        font-size: 16px;
+        margin-right: 8px;
+      }
+      .copyright-section {
+        font-size: 12px;
+        padding: 0 10px;
+      }
+      .credits {
+        font-size: 11px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+      }
+      .creator-link {
+        margin-left: 3px;
+        margin-right: 3px;
+      }
+      .form-group select {
+        background-position: right 10px center;
+        padding-right: 35px;
+      }
+    }
+    @media (min-width: 769px) {
+      .mobile-sidebar {
+        display: none;
+      }
+      .menu-btn {
+        display: none;
+      }
+    }
+</style>
+</link></head>
 <body>
-  <header>
-    <div class="logo">B L A N C O</div>
-    <div class="navbar">
-      <a href="index.html">HOME</a>
-      <a href="women.html">WOMEN</a>
-      <a href="men.html">MEN</a>
-      <a href="#">PRODUCTION</a>
-      <a href="about-us.html">ABOUT</a>
-      <a href="contact-us.html">CONTACT</a>
-    </div>
-  </header>
-
-  <div class="container">
-    <h1>Terms and Conditions</h1>
-    <p>Welcome to the Blanco Agency website. Please read these Terms and Conditions carefully before using the website or availing of any of our services. By using this website, you acknowledge that you have read, understood, and agree to be bound by these terms.</p>
-    <hr class="divider"/>
-
-    <h2>1. Definitions</h2>
-    <ul>
-      <li><strong>“Website”</strong>: Refers to the Blanco Agency website, including all its pages and content.</li>
-      <li><strong>“Agency” or “We”</strong>: Refers to Blanco Agency, the owner and operator of the website.</li>
-      <li><strong>“User” or “Client”</strong>: Refers to any individual or entity accessing the website or requesting services through it.</li>
-    </ul>
-
-    <h2>2. Scope of Services</h2>
-    <ul>
-      <li>Providing models for photo shoots, advertisements, and shows.</li>
-      <li>Coordinating professional photo shoot packages (models, photographers, location, equipment, etc.).</li>
-      <li>Collaborating with brands and companies on advertising campaigns.</li>
-      <li>Organizing professional workshops and fashion shows.</li>
-    </ul>
-
-    <h2>3. Website Usage Terms</h2>
-    <ul>
-      <li>Use the website for lawful purposes only.</li>
-      <li>No copying or distributing content without consent.</li>
-      <li>Agency may restrict access for violations.</li>
-    </ul>
-
-    <h2>4. Bookings and Payments</h2>
-    <ul>
-      <li>Booking is confirmed only after payment.</li>
-      <li>Accepted methods are listed on the website or agreed with the client.</li>
-      <li>Notify 48 hours in advance for cancellation/refund.</li>
-    </ul>
-
-    <h2>5. Payment and Commission Policy</h2>
-    <h3>1. Initial Payment (Deposit)</h3>
-    <ul>
-      <li>50% deposit before any project/service.</li>
-      <li>Confirmed after client approval.</li>
-    </ul>
-    <h3>2. Final Payment (Remaining Balance)</h3>
-    <ul>
-      <li>Remaining 50% due within 1 day of completion.</li>
-      <li>Late payment may incur fees/legal action.</li>
-    </ul>
-    <h3>3. Agency Commission</h3>
-    <ul>
-      <li>25% commission on total service amount.</li>
-      <li>Excludes model’s direct costs.</li>
-    </ul>
-    <h3>4. Taxes</h3>
-    <ul>
-      <li>14% VAT not included in quotes.</li>
-      <li>Client bears responsibility for taxes.</li>
-    </ul>
-    <h3>5. Late Payment Terms</h3>
-    <ul>
-      <li>Delayed payment may lead to suspension.</li>
-      <li>5% weekly late fee may apply.</li>
-    </ul>
-
-    <h2>6. Cancellation and Refund Policy</h2>
-    <ul>
-      <li>Late cancellations may lose part or full payment.</li>
-      <li>If agency cancels, refund or rescheduling is offered.</li>
-    </ul>
-
-    <h2>7. Intellectual Property Rights</h2>
-    <ul>
-      <li>All content is owned or licensed.</li>
-      <li>No reuse without written consent.</li>
-    </ul>
-
-    <h2>8. Privacy Policy</h2>
-    <ul>
-      <li>Data collected only for service and communication.</li>
-      <li>No sharing without consent unless legally required.</li>
-    </ul>
-
-    <h2>9. Limitation of Liability</h2>
-    <ul>
-      <li>Not liable for losses from site use.</li>
-      <li>No guarantee of uninterrupted service.</li>
-    </ul>
-
-    <h2>10. Pricing and Billing System</h2>
-    <ul>
-      <li>Rates are hourly, half-day, or full-day.</li>
-      <li>Hour = 60 mins, Half-day = 4 hours, Full-day = 8 hours.</li>
-    </ul>
-
-    <h2>11. Amendments to Terms</h2>
-    <ul>
-      <li>Terms may change anytime.</li>
-      <li>Using the site means you accept changes.</li>
-    </ul>
-
-    <h2>12. Contact Us</h2>
-    <ul>
-      <li><strong>Email:</strong> [Your Email]</li>
-      <li><strong>Phone Number:</strong> [Your Phone]</li>
-    </ul>
-  </div>
-
-  <div class="background-image"></div>
-  <footer class="site-footer">
-    <div class="footer-nav">
-      <a href="terms-and-conditions.html" class="footer-btn">
-        <i class="fas fa-file-contract"></i>
-        <span>Terms & Conditions</span>
-      </a>
-      <a href="contact-us.html" class="footer-btn">
-        <i class="fas fa-envelope"></i>
-        <span>Contact Us</span>
-      </a>
-      <a href="about-us.html" class="footer-btn">
-        <i class="fas fa-envelope"></i>
-        <span>About Us</span>
-      </a>
-    </div>
-    
-    <div class="copyright-section">
-      <p class="copyright-text">
-        &copy; 2025 BLANCO Agency. All Rights Reserved.
+<div class="mobile-sidebar" id="mobileSidebar">
+<button class="close-sidebar" id="closeSidebar">
+<i class="fas fa-times"></i>
+</button>
+<a href="women.html">WOMEN</a>
+<a href="men.html">MEN</a>
+<a href="lifestyle.html">LIFE STYLE</a>
+<a href="#">PRODUCTION</a>
+<a href="about-us.html">ABOUT</a>
+<a href="contact-us.html">CONTACT</a>
+<div class="social-links">
+<a href="#"><i class="fab fa-instagram"></i></a>
+<a href="#"><i class="fab fa-tiktok"></i></a>
+<a href="#"><i class="fab fa-facebook-f"></i></a>
+</div>
+</div><header>
+<div class="logo">B L A N C O</div>
+<div class="navbar">
+<a href="index.html">HOME</a>
+<a href="women.html">WOMEN</a>
+<a href="men.html">MEN</a>
+<a href="lifestyle.html">LIFE STYLE</a>
+<a href="#">PRODUCTION</a>
+<a href="about-us.html">ABOUT</a>
+<a href="contact-us.html">CONTACT</a>
+</div>
+<div class="menu-btn" id="menuBtn">
+<i class="fas fa-bars"></i>
+</div>
+</header>
+<div class="container">
+<h1>Terms and Conditions</h1>
+<p>Welcome to the Blanco Agency website. Please read these Terms and Conditions carefully before using the website or availing of any of our services. By using this website, you acknowledge that you have read, understood, and agree to be bound by these terms.</p>
+<hr class="divider"/>
+<h2>1. Definitions</h2>
+<ul>
+<li><strong>“Website”</strong>: Refers to the Blanco Agency website, including all its pages and content.</li>
+<li><strong>“Agency” or “We”</strong>: Refers to Blanco Agency, the owner and operator of the website.</li>
+<li><strong>“User” or “Client”</strong>: Refers to any individual or entity accessing the website or requesting services through it.</li>
+</ul>
+<h2>2. Scope of Services</h2>
+<ul>
+<li>Providing models for photo shoots, advertisements, and shows.</li>
+<li>Coordinating professional photo shoot packages (models, photographers, location, equipment, etc.).</li>
+<li>Collaborating with brands and companies on advertising campaigns.</li>
+<li>Organizing professional workshops and fashion shows.</li>
+</ul>
+<h2>3. Website Usage Terms</h2>
+<ul>
+<li>Use the website for lawful purposes only.</li>
+<li>No copying or distributing content without consent.</li>
+<li>Agency may restrict access for violations.</li>
+</ul>
+<h2>4. Bookings and Payments</h2>
+<ul>
+<li>Booking is confirmed only after payment.</li>
+<li>Accepted methods are listed on the website or agreed with the client.</li>
+<li>Notify 48 hours in advance for cancellation/refund.</li>
+</ul>
+<h2>5. Payment and Commission Policy</h2>
+<h3>1. Initial Payment (Deposit)</h3>
+<ul>
+<li>50% deposit before any project/service.</li>
+<li>Confirmed after client approval.</li>
+</ul>
+<h3>2. Final Payment (Remaining Balance)</h3>
+<ul>
+<li>Remaining 50% due within 1 day of completion.</li>
+<li>Late payment may incur fees/legal action.</li>
+</ul>
+<h3>3. Agency Commission</h3>
+<ul>
+<li>25% commission on total service amount.</li>
+<li>Excludes model’s direct costs.</li>
+</ul>
+<h3>4. Taxes</h3>
+<ul>
+<li>14% VAT not included in quotes.</li>
+<li>Client bears responsibility for taxes.</li>
+</ul>
+<h3>5. Late Payment Terms</h3>
+<ul>
+<li>Delayed payment may lead to suspension.</li>
+<li>5% weekly late fee may apply.</li>
+</ul>
+<h2>6. Cancellation and Refund Policy</h2>
+<ul>
+<li>Late cancellations may lose part or full payment.</li>
+<li>If agency cancels, refund or rescheduling is offered.</li>
+</ul>
+<h2>7. Intellectual Property Rights</h2>
+<ul>
+<li>All content is owned or licensed.</li>
+<li>No reuse without written consent.</li>
+</ul>
+<h2>8. Privacy Policy</h2>
+<ul>
+<li>Data collected only for service and communication.</li>
+<li>No sharing without consent unless legally required.</li>
+</ul>
+<h2>9. Limitation of Liability</h2>
+<ul>
+<li>Not liable for losses from site use.</li>
+<li>No guarantee of uninterrupted service.</li>
+</ul>
+<h2>10. Pricing and Billing System</h2>
+<ul>
+<li>Rates are hourly, half-day, or full-day.</li>
+<li>Hour = 60 mins, Half-day = 4 hours, Full-day = 8 hours.</li>
+</ul>
+<h2>11. Amendments to Terms</h2>
+<ul>
+<li>Terms may change anytime.</li>
+<li>Using the site means you accept changes.</li>
+</ul>
+<h2>12. Contact Us</h2>
+<ul>
+<li><strong>Email:</strong> [Your Email]</li>
+<li><strong>Phone Number:</strong> [Your Phone]</li>
+</ul>
+</div>
+<div class="background-image"></div>
+<footer class="site-footer">
+<div class="footer-nav">
+<a class="footer-btn" href="terms-and-conditions.html">
+<i class="fas fa-file-contract"></i>
+<span>Terms &amp; Conditions</span>
+</a>
+<a class="footer-btn" href="contact-us.html">
+<i class="fas fa-envelope"></i>
+<span>Contact Us</span>
+</a>
+<a class="footer-btn" href="about-us.html">
+<i class="fas fa-envelope"></i>
+<span>About Us</span>
+</a>
+</div>
+<div class="copyright-section">
+<p class="copyright-text">
+        © 2025 BLANCO Agency. All Rights Reserved.
       </p>
-      <p class="credits">
-        Created with <i class="fas fa-heart"></i> by 
-        <a href="https://menasamuel2010.github.io/MISA-Technolgy./" class="creator-link">MISA Technolgy</a>
-      </div>
-        with <i class=""></i> 
-        <a href="https://www.instagram.com/mina_samuel_2010/" class="creator-link">Mina Samuel</a>
-        
-      </p>
-    </div>
-  </footer>
+</div>
+</footer>
+<script>
+    document.querySelector('.logo').addEventListener('click', function() {
+    window.location.href = 'index.html';
+  });
+  document.querySelector('.logo').addEventListener('click', function() {
+    this.style.opacity = '0.7'; // تأثير خفيف عند النقر
+    setTimeout(() => {
+      window.location.href = 'index.html';
+    }, 200); // تأخير 200 مللي ثانية لرؤية التأثير
+  });
+  
+
+// Mobile Menu Script
+
+    // فتح وإغلاق القائمة الجانبية للهاتف
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileSidebar = document.getElementById('mobileSidebar');
+    const closeSidebar = document.getElementById('closeSidebar');
+  
+    menuBtn.addEventListener('click', () => {
+      mobileSidebar.classList.add('open');
+    });
+
+    document.querySelector('.logo').addEventListener('click', function() {
+    window.location.href = 'index.html';
+  });
+  document.querySelector('.logo').addEventListener('click', function() {
+    this.style.opacity = '0.7'; // تأثير خفيف عند النقر
+    setTimeout(() => {
+      window.location.href = 'index.html';
+    }, 200); // تأخير 200 مللي ثانية لرؤية التأثير
+  });
+  
+    closeSidebar.addEventListener('click', () => {
+      mobileSidebar.classList.remove('open');
+    });
+  </script>
 </body>
 </html>
