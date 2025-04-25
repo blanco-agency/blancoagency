@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -919,8 +918,8 @@
 
   <!-- Multi-step form -->
   <form action="https://formsubmit.co/blancoagencyy1@gmail.com" method="POST" enctype="multipart/form-data">
-    <input type="hidden" name="_captcha" value="false">
     <input type="hidden" name="_next" value="https://blanco-agency.github.io/blancoagency/th.html">
+    <input type="hidden" name="_subject" value="New Shoot Production Request">
     <input type="hidden" name="_template" value="table">
     <div class="apply-container">
       <!-- Section 1: Photoshoot Details -->
@@ -957,7 +956,7 @@
                 <span>Drop your files</span>
                 <span class="sub-text"></span>
                 <input type="file" id="file-upload" class="file-upload-input" name="shoot_reference_files[]" multiple>
-                </label>
+              </label>
             </div>
             
             <!-- معاينة الملفات المرفوعة -->
@@ -1113,19 +1112,6 @@
       menuBtn.classList.add('active');
     });
     
-    document.querySelector('form').addEventListener('submit', function(e) {
-    const files = document.getElementById('file-upload').files;
-    const maxSize = 20 * 1024 * 1024; // 20MB كحد أقصى
-
-    for (let i = 0; i < files.length; i++) {
-        if (files[i].size > maxSize) {
-            e.preventDefault();
-            alert("الملف " + files[i].name + " أكبر من 20MB. يُرجى اختيار ملف أصغر.");
-            return;
-        }
-    }
-});
-
     closeSidebar.addEventListener('click', function() {
       mobileSidebar.classList.remove('open');
       menuBtn.classList.remove('active');
