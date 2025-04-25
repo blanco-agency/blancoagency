@@ -1097,15 +1097,11 @@
   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
   <script>
     AOS.init();
-
+  
     // DOM elements
     const menuBtn = document.getElementById('menuBtn');
     const closeSidebar = document.getElementById('closeSidebar');
     const mobileSidebar = document.getElementById('mobileSidebar');
-    const nextBtn = document.getElementById('nextBtn');
-    const fileUpload = document.getElementById('file-upload');
-    const uploadedFilesContainer = document.getElementById('uploaded-files');
-    const fileList = document.getElementById('file-list');
     
     // Open/close sidebar
     menuBtn.addEventListener('click', function() {
@@ -1140,185 +1136,24 @@
       });
       document.getElementById(`section${sectionNumber}`).classList.add('active');
     }
-
-    // تعديل دالة التحقق قبل الإرسال
-document.querySelector('form').addEventListener('submit', function(e) {
-  let isValid = true;
   
-  // التحقق من الحقول المطلوبة في القسم الثاني
-  const requiredFieldsSection2 = [
-    { element: document.getElementById('first-name'), error: 'Please enter your first name' },
-    { element: document.getElementById('last-name'), error: 'Please enter your last name' },
-    { element: document.querySelector('input[name="phone"]'), error: 'Please enter your phone number' },
-    { element: document.getElementById('email'), error: 'Please enter your email' }
-  ];
-  
-  requiredFieldsSection2.forEach(field => {
-    if (!field.element.value) {
-      field.element.closest('.form-group').classList.add('invalid');
-      const errorMsg = field.element.closest('.form-group').querySelector('.error-message');
-      if (errorMsg) errorMsg.textContent = field.error;
-      isValid = false;
-    }
-  });
-  
-  if (!isValid) {
-    e.preventDefault();
-    // التمرير إلى أول حقل غير صالح
-    const firstInvalid = document.querySelector('.form-group.invalid');
-    if (firstInvalid) {
-      firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }
-  }
-});
-
-document.querySelector('form').addEventListener('submit', function(e) {
-  const formData = new FormData(this);
-  for (let [key, value] of formData.entries()) {
-    console.log(key, value);
-  }
-});
-    
-    // التحقق من الحقول قبل الانتقال للصفحة الثانية
-    nextBtn.addEventListener('click', function() {
+    // التحقق من الحقول قبل الانتقال للقسم التالي
+    document.getElementById('nextBtn').addEventListener('click', function() {
+      const currentSection = document.querySelector('.form-section.active');
+      const requiredInputs = currentSection.querySelectorAll('[required]');
       let isValid = true;
-      
-      // التحقق من الحقول المطلوبة
-      const requiredFields = [
-        { element: document.getElementById('date'), error: 'Please select a date' },
-        { element: document.getElementById('brand-name'), error: 'Please enter your brand name' },
-        { element: document.getElementById('models-count'), error: 'Please enter number of models' },
-        { element: document.getElementById('budget'), error: 'Please enter your budget range' },
-        { element: document.getElementById('currency'), error: 'Please select currency' }
-      ];
-      
-      // التحقق من الخدمات المختارة
-      const services = document.querySelectorAll('input[name="needs[]"]:checked');
-      if (services.length === 0) {
-        document.getElementById('services-error').style.display = 'block';
-        isValid = false;
-      } else {
-        document.getElementById('services-error').style.display = 'none';
-      }
-      
-      // التحقق من الحقول الأخرى
-      requiredFields.forEach(field => {
-        const formGroup = field.element.closest('.form-group');
-        if (!field.element.value) {
-          formGroup.classList.add('invalid');
-          formGroup.querySelector('.error-message').textContent = field.error;
+  
+      requiredInputs.forEach(input => {
+        if (!input.value.trim() || (input.type === 'checkbox' && !currentSection.querySelector(`[name="${input.name}"]:checked`))) {
           isValid = false;
+          input.style.border = '2px solid red';
         } else {
-          formGroup.classList.remove('invalid');
+          input.style.border = '';
         }
       });
-      
-      // إذا كانت جميع الحقول صالحة، انتقل للصفحة الثانية
+  
       if (isValid) {
         showSection(2);
-      } else {
-        // قم بالتمرير إلى أول حقل غير صالح
-        const firstInvalid = document.querySelector('.form-group.invalid');
-        if (firstInvalid) {
-          firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }
-      }
-    });
-    
-    // معالجة رفع الملفات
-    fileUpload.addEventListener('change', function(e) {
-      fileList.innerHTML = '';
-      
-      if (this.files.length > 0) {
-        uploadedFilesContainer.classList.add('active');
-        
-        for (let i = 0; i < this.files.length; i++) {
-          const file = this.files[i];
-          const filePreview = document.createElement('div');
-          filePreview.className = 'file-preview';
-          
-          // اختيار الأيقونة المناسبة حسب نوع الملف
-          let iconClass = 'fa-file';
-          if (file.type.startsWith('image/')) {
-            iconClass = 'fa-file-image';
-          } else if (file.type.startsWith('video/')) {
-            iconClass = 'fa-file-video';
-          } else if (file.type === 'application/pdf') {
-            iconClass = 'fa-file-pdf';
-          }
-          
-          filePreview.innerHTML = `
-            <i class="fas ${iconClass}"></i>
-            <div class="file-info">
-              <div class="file-name">${file.name}</div>
-              <div class="file-size">${formatFileSize(file.size)}</div>
-            </div>
-            <i class="fas fa-times remove-file" data-index="${i}"></i>
-          `;
-          
-          fileList.appendChild(filePreview);
-        }
-        
-        // إضافة أحداث لإزالة الملفات
-        document.querySelectorAll('.remove-file').forEach(btn => {
-          btn.addEventListener('click', function() {
-            const index = parseInt(this.getAttribute('data-index'));
-            removeFile(index);
-          });
-        });
-      } else {
-        uploadedFilesContainer.classList.remove('active');
-      }
-    });
-    
-    // دالة لإزالة ملف من القائمة
-    function removeFile(index) {
-      const dt = new DataTransfer();
-      const files = fileUpload.files;
-      
-      for (let i = 0; i < files.length; i++) {
-        if (i !== index) {
-          dt.items.add(files[i]);
-        }
-      }
-      
-      fileUpload.files = dt.files;
-      fileUpload.dispatchEvent(new Event('change'));
-    }
-    
-    // دالة لتنسيق حجم الملف
-    function formatFileSize(bytes) {
-      if (bytes === 0) return '0 Bytes';
-      
-      const k = 1024;
-      const sizes = ['Bytes', 'KB', 'MB', 'GB'];
-      const i = Math.floor(Math.log(bytes) / Math.log(k));
-      
-      return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
-    }
-    
-    // دعم سحب وإفلات الملفات
-    const uploadContainer = document.querySelector('.file-upload-container');
-    
-    uploadContainer.addEventListener('dragover', (e) => {
-      e.preventDefault();
-      uploadContainer.style.borderColor = '#400000';
-      uploadContainer.style.backgroundColor = 'rgba(64, 0, 0, 0.2)';
-    });
-    
-    uploadContainer.addEventListener('dragleave', () => {
-      uploadContainer.style.borderColor = 'rgba(64, 0, 0, 0.5)';
-      uploadContainer.style.backgroundColor = 'rgba(20, 20, 20, 0.3)';
-    });
-    
-    uploadContainer.addEventListener('drop', (e) => {
-      e.preventDefault();
-      uploadContainer.style.borderColor = 'rgba(64, 0, 0, 0.5)';
-      uploadContainer.style.backgroundColor = 'rgba(20, 20, 20, 0.3)';
-      
-      if (e.dataTransfer.files.length) {
-        fileUpload.files = e.dataTransfer.files;
-        fileUpload.dispatchEvent(new Event('change'));
       }
     });
   </script>
