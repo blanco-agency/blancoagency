@@ -634,7 +634,244 @@
     flex-direction: column;
     gap: 5px;
   }
+  /* أنماط رفع الملفات */
+  .file-upload-container {
+      border: 2px dashed rgba(64, 0, 0, 0.5);
+      border-radius: 8px;
+      padding: 20px;
+      text-align: center;
+      margin-bottom: 15px;
+      background: rgba(20, 20, 20, 0.3);
+      transition: all 0.3s ease;
+    }
+    
+    .file-upload-container:hover {
+      border-color: #400000;
+      background: rgba(20, 20, 20, 0.5);
+    }
+    
+    .file-upload-label {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      cursor: pointer;
+    }
+    
+    .file-upload-label i {
+      font-size: 40px;
+      color: #400000;
+      margin-bottom: 10px;
+    }
+    
+    .file-upload-label span {
+      font-size: 16px;
+      color: #f2ebc6;
+    }
+    
+    .file-upload-input {
+      display: none;
+    }
+    
+    .uploaded-files {
+      margin-top: 20px;
+      display: none;
+    }
+    
+    .uploaded-files.active {
+      display: block;
+    }
+    
+    .file-preview {
+      display: flex;
+      align-items: center;
+      background: rgba(20, 20, 20, 0.7);
+      padding: 10px;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+    
+    .file-preview i {
+      margin-right: 10px;
+      color: #f2ebc6;
+    }
+    
+    .file-info {
+      flex: 1;
+      overflow: hidden;
+    }
+    
+    .file-name {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      color: #f2ebc6;
+    }
+    
+    .file-size {
+      font-size: 12px;
+      color: rgba(255,255,255,0.6);
+    }
+    
+    .remove-file {
+      color: #ff4d4d;
+      cursor: pointer;
+      margin-left: 10px;
+    }
+    
+    /* رسائل التحقق */
+    .error-message {
+      color: #ff4d4d;
+      font-size: 14px;
+      margin-top: 5px;
+      display: none;
+    }
+    
+    .form-group.invalid .error-message {
+      display: block;
+    }
+    
+    .form-group.invalid input,
+    .form-group.invalid select,
+    .form-group.invalid textarea {
+      border-color: #ff4d4d;
+    }
 }
+
+  /* أنماط رفع الملفات المعدلة */
+  .file-upload-container {
+    border: 2px dashed rgba(64, 0, 0, 0.5);
+    border-radius: 15px;
+    padding: 40px 20px;
+    text-align: center;
+    margin-bottom: 15px;
+    background: rgba(20, 20, 20, 0.3);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .file-upload-container:hover {
+    border-color: #400000;
+    background: rgba(20, 20, 20, 0.5);
+  }
+  
+  .file-upload-label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    color: #f2ebc6;
+  }
+  
+  .file-upload-label i {
+    font-size: 50px;
+    color: #400000;
+    margin-bottom: 15px;
+    transition: all 0.3s ease;
+  }
+  
+  .file-upload-label span {
+    font-size: 18px;
+    margin-bottom: 5px;
+  }
+  
+  .file-upload-label .sub-text {
+    font-size: 14px;
+    color: rgba(255,255,255,0.7);
+  }
+  
+  .file-upload-input {
+    display: none;
+  }
+  
+  /* تصميم جديد للملفات المرفوعة */
+  .uploaded-files {
+    margin-top: 30px;
+    display: none;
+  }
+  
+  .uploaded-files.active {
+    display: block;
+    animation: fadeIn 0.5s ease;
+  }
+  
+  .uploaded-files h4 {
+    color: #f2ebc6;
+    margin-bottom: 15px;
+    font-size: 18px;
+    text-align: left;
+    padding-bottom: 5px;
+    border-bottom: 1px solid rgba(64, 0, 0, 0.5);
+  }
+  
+  .file-preview {
+    display: flex;
+    align-items: center;
+    background: rgba(30, 30, 30, 0.7);
+    padding: 12px 15px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    border: 1px solid rgba(64, 0, 0, 0.3);
+    transition: all 0.3s ease;
+  }
+  
+  .file-preview:hover {
+    background: rgba(64, 0, 0, 0.2);
+    border-color: #400000;
+  }
+  
+  .file-preview i {
+    margin-right: 15px;
+    color: #f2ebc6;
+    font-size: 20px;
+  }
+  
+  .file-info {
+    flex: 1;
+    overflow: hidden;
+  }
+  
+  .file-name {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #f2ebc6;
+    font-size: 15px;
+  }
+  
+  .file-size {
+    font-size: 12px;
+    color: rgba(255,255,255,0.6);
+    margin-top: 3px;
+  }
+  
+  .remove-file {
+    color: #ff4d4d;
+    cursor: pointer;
+    margin-left: 15px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+  }
+  
+  .remove-file:hover {
+    transform: scale(1.2);
+  }
+  
+  /* تأثيرات السحب والإفلات */
+  .file-upload-container.drag-over {
+    border-color: #f2ebc6;
+    background: rgba(64, 0, 0, 0.2);
+  }
+  
+  .file-upload-container.drag-over i {
+    color: #f2ebc6;
+    transform: scale(1.1);
+  }
+  
+  .file-upload-container.drag-over span {
+    color: #f2ebc6;
+  }
+
     }
   </style>
 </head>
@@ -680,11 +917,12 @@
   </div>
 
   <!-- Multi-step form -->
-  <form action="https://formsubmit.co/blanco.agency.222@gmail.com" method="POST">
+  <form action="https://formsubmit.co/blancoagencyy1@gmail.com" method="POST" enctype="multipart/form-data">
     <input type="hidden" name="_captcha" value="false">
     <input type="hidden" name="_next" value="https://blanco-agency.github.io/blancoagency/th.html">
     <input type="hidden" name="_subject" value="New Shoot Production Request">
     <input type="hidden" name="_template" value="table">
+    <input type="hidden" name="_autoresponse" value="Thank you for your submission! We will contact you soon.">
     <div class="apply-container">
       <!-- Section 1: Photoshoot Details -->
       <div class="form-section active" id="section1">
@@ -693,22 +931,55 @@
         <div class="form-group">
           <label for="date">Date *</label>
           <input type="date" id="date" name="date" required>
+          <div class="error-message">Please select a date</div>
         </div>
         
         <div class="form-group">
           <label for="brand-name">Brand name *</label>
           <input type="text" id="brand-name" name="brand_name" required>
+          <div class="error-message">Please enter your brand name</div>
         </div>
        
         <div class="form-group">
           <label for="models-count">Models needed *</label>
           <input type="number" id="models-count" name="models_count" min="1" required>
+          <div class="error-message">Please enter number of models</div>
         </div>
         
-        <div class="form-group">
-          <label for="shoot-reference">Shoot reference</label>
-          <textarea id="shoot-reference" name="shoot_reference"></textarea>
-        </div>
+        
+        
+        
+          <div class="form-group">
+            <label for="shoot-reference">Shoot reference</label>
+            
+            <div class="file-upload-container" id="uploadContainer">
+              <label class="file-upload-label">
+                <i class="fas fa-cloud-upload-alt"></i>
+                <span>Drop your files</span>
+                <span class="sub-text"></span>
+                <input type="file" id="file-upload" class="file-upload-input" name="shoot_reference_files[]" multiple>
+              </label>
+            </div>
+            
+            <!-- معاينة الملفات المرفوعة -->
+            <div class="uploaded-files" id="uploaded-files">
+              <h4>Uploaded Files:</h4>
+              <div id="file-list"></div>
+            </div>
+            
+            <!-- حقل النص -->
+            <textarea id="shoot-reference" name="shoot_reference_text" placeholder="Add any additional reference notes here..."></textarea>
+          </div>
+            
+            
+          
+          <!-- معاينة الملفات المرفوعة -->
+          <div class="uploaded-files" id="uploaded-files">
+            <h4 style="color: #f2ebc6; margin-bottom: 10px; font-size: 16px;">Uploaded Files:</h4>
+            <div id="file-list"></div>
+          </div>
+          
+          
         
         <hr style="border-color: #400000; margin: 30px 0;">
         
@@ -755,11 +1026,13 @@
               </div>
             </label>
           </div>
+          <div class="error-message" id="services-error">Please select at least one service</div>
         </div>
         
         <div class="form-group">
           <label for="budget">Range Budget *</label>
           <input type="text" id="budget" name="budget" required>
+          <div class="error-message">Please enter your budget range</div>
         </div>
         
         <div class="form-group">
@@ -769,10 +1042,11 @@
             <option value="EGP">EGP</option>
             <option value="USD">USD</option>
           </select>
+          <div class="error-message">Please select currency</div>
         </div>
         
         <div class="form-buttons">
-          <button type="button" class="form-button next-btn" onclick="showSection(2)">Next</button>
+          <button type="button" class="form-button next-btn" id="nextBtn">Next</button>
         </div>
       </div>
       
@@ -829,18 +1103,22 @@
     const menuBtn = document.getElementById('menuBtn');
     const closeSidebar = document.getElementById('closeSidebar');
     const mobileSidebar = document.getElementById('mobileSidebar');
-
+    const nextBtn = document.getElementById('nextBtn');
+    const fileUpload = document.getElementById('file-upload');
+    const uploadedFilesContainer = document.getElementById('uploaded-files');
+    const fileList = document.getElementById('file-list');
+    
     // Open/close sidebar
     menuBtn.addEventListener('click', function() {
       mobileSidebar.classList.add('open');
       menuBtn.classList.add('active');
     });
-
+    
     closeSidebar.addEventListener('click', function() {
       mobileSidebar.classList.remove('open');
       menuBtn.classList.remove('active');
     });
-
+    
     // Close sidebar when clicking outside
     document.addEventListener('click', function(event) {
       if (!mobileSidebar.contains(event.target) && event.target !== menuBtn && !menuBtn.contains(event.target)) {
@@ -848,17 +1126,14 @@
         menuBtn.classList.remove('active');
       }
     });
-
+    
     document.querySelector('.logo').addEventListener('click', function() {
-    window.location.href = 'index.html';
-  });
-  document.querySelector('.logo').addEventListener('click', function() {
-    this.style.opacity = '0.7'; // تأثير خفيف عند النقر
-    setTimeout(() => {
-      window.location.href = 'index.html';
-    }, 200); // تأخير 200 مللي ثانية لرؤية التأثير
-  });
-
+      this.style.opacity = '0.7';
+      setTimeout(() => {
+        window.location.href = 'index.html';
+      }, 200);
+    });
+    
     // التنقل بين أقسام النموذج
     function showSection(sectionNumber) {
       document.querySelectorAll('.form-section').forEach(section => {
@@ -866,6 +1141,149 @@
       });
       document.getElementById(`section${sectionNumber}`).classList.add('active');
     }
+    
+    // التحقق من الحقول قبل الانتقال للصفحة الثانية
+    nextBtn.addEventListener('click', function() {
+      let isValid = true;
+      
+      // التحقق من الحقول المطلوبة
+      const requiredFields = [
+        { element: document.getElementById('date'), error: 'Please select a date' },
+        { element: document.getElementById('brand-name'), error: 'Please enter your brand name' },
+        { element: document.getElementById('models-count'), error: 'Please enter number of models' },
+        { element: document.getElementById('budget'), error: 'Please enter your budget range' },
+        { element: document.getElementById('currency'), error: 'Please select currency' }
+      ];
+      
+      // التحقق من الخدمات المختارة
+      const services = document.querySelectorAll('input[name="needs[]"]:checked');
+      if (services.length === 0) {
+        document.getElementById('services-error').style.display = 'block';
+        isValid = false;
+      } else {
+        document.getElementById('services-error').style.display = 'none';
+      }
+      
+      // التحقق من الحقول الأخرى
+      requiredFields.forEach(field => {
+        const formGroup = field.element.closest('.form-group');
+        if (!field.element.value) {
+          formGroup.classList.add('invalid');
+          formGroup.querySelector('.error-message').textContent = field.error;
+          isValid = false;
+        } else {
+          formGroup.classList.remove('invalid');
+        }
+      });
+      
+      // إذا كانت جميع الحقول صالحة، انتقل للصفحة الثانية
+      if (isValid) {
+        showSection(2);
+      } else {
+        // قم بالتمرير إلى أول حقل غير صالح
+        const firstInvalid = document.querySelector('.form-group.invalid');
+        if (firstInvalid) {
+          firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      }
+    });
+    
+    // معالجة رفع الملفات
+    fileUpload.addEventListener('change', function(e) {
+      fileList.innerHTML = '';
+      
+      if (this.files.length > 0) {
+        uploadedFilesContainer.classList.add('active');
+        
+        for (let i = 0; i < this.files.length; i++) {
+          const file = this.files[i];
+          const filePreview = document.createElement('div');
+          filePreview.className = 'file-preview';
+          
+          // اختيار الأيقونة المناسبة حسب نوع الملف
+          let iconClass = 'fa-file';
+          if (file.type.startsWith('image/')) {
+            iconClass = 'fa-file-image';
+          } else if (file.type.startsWith('video/')) {
+            iconClass = 'fa-file-video';
+          } else if (file.type === 'application/pdf') {
+            iconClass = 'fa-file-pdf';
+          }
+          
+          filePreview.innerHTML = `
+            <i class="fas ${iconClass}"></i>
+            <div class="file-info">
+              <div class="file-name">${file.name}</div>
+              <div class="file-size">${formatFileSize(file.size)}</div>
+            </div>
+            <i class="fas fa-times remove-file" data-index="${i}"></i>
+          `;
+          
+          fileList.appendChild(filePreview);
+        }
+        
+        // إضافة أحداث لإزالة الملفات
+        document.querySelectorAll('.remove-file').forEach(btn => {
+          btn.addEventListener('click', function() {
+            const index = parseInt(this.getAttribute('data-index'));
+            removeFile(index);
+          });
+        });
+      } else {
+        uploadedFilesContainer.classList.remove('active');
+      }
+    });
+    
+    // دالة لإزالة ملف من القائمة
+    function removeFile(index) {
+      const dt = new DataTransfer();
+      const files = fileUpload.files;
+      
+      for (let i = 0; i < files.length; i++) {
+        if (i !== index) {
+          dt.items.add(files[i]);
+        }
+      }
+      
+      fileUpload.files = dt.files;
+      fileUpload.dispatchEvent(new Event('change'));
+    }
+    
+    // دالة لتنسيق حجم الملف
+    function formatFileSize(bytes) {
+      if (bytes === 0) return '0 Bytes';
+      
+      const k = 1024;
+      const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+      const i = Math.floor(Math.log(bytes) / Math.log(k));
+      
+      return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+    }
+    
+    // دعم سحب وإفلات الملفات
+    const uploadContainer = document.querySelector('.file-upload-container');
+    
+    uploadContainer.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      uploadContainer.style.borderColor = '#400000';
+      uploadContainer.style.backgroundColor = 'rgba(64, 0, 0, 0.2)';
+    });
+    
+    uploadContainer.addEventListener('dragleave', () => {
+      uploadContainer.style.borderColor = 'rgba(64, 0, 0, 0.5)';
+      uploadContainer.style.backgroundColor = 'rgba(20, 20, 20, 0.3)';
+    });
+    
+    uploadContainer.addEventListener('drop', (e) => {
+      e.preventDefault();
+      uploadContainer.style.borderColor = 'rgba(64, 0, 0, 0.5)';
+      uploadContainer.style.backgroundColor = 'rgba(20, 20, 20, 0.3)';
+      
+      if (e.dataTransfer.files.length) {
+        fileUpload.files = e.dataTransfer.files;
+        fileUpload.dispatchEvent(new Event('change'));
+      }
+    });
   </script>
   <footer class="site-footer">
     <div class="footer-nav">
