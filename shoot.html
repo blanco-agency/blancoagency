@@ -921,6 +921,7 @@
     <input type="hidden" name="_next" value="https://blanco-agency.github.io/blancoagency/th.html">
     <input type="hidden" name="_subject" value="New Shoot Production Request">
     <input type="hidden" name="_template" value="table">
+    <input type="hidden" name="_captcha" value="false">
     <div class="apply-container">
       <!-- Section 1: Photoshoot Details -->
       <div class="form-section active" id="section1">
@@ -1140,6 +1141,44 @@
       });
       document.getElementById(`section${sectionNumber}`).classList.add('active');
     }
+
+    // تعديل دالة التحقق قبل الإرسال
+document.querySelector('form').addEventListener('submit', function(e) {
+  let isValid = true;
+  
+  // التحقق من الحقول المطلوبة في القسم الثاني
+  const requiredFieldsSection2 = [
+    { element: document.getElementById('first-name'), error: 'Please enter your first name' },
+    { element: document.getElementById('last-name'), error: 'Please enter your last name' },
+    { element: document.querySelector('input[name="phone"]'), error: 'Please enter your phone number' },
+    { element: document.getElementById('email'), error: 'Please enter your email' }
+  ];
+  
+  requiredFieldsSection2.forEach(field => {
+    if (!field.element.value) {
+      field.element.closest('.form-group').classList.add('invalid');
+      const errorMsg = field.element.closest('.form-group').querySelector('.error-message');
+      if (errorMsg) errorMsg.textContent = field.error;
+      isValid = false;
+    }
+  });
+  
+  if (!isValid) {
+    e.preventDefault();
+    // التمرير إلى أول حقل غير صالح
+    const firstInvalid = document.querySelector('.form-group.invalid');
+    if (firstInvalid) {
+      firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  }
+});
+
+document.querySelector('form').addEventListener('submit', function(e) {
+  const formData = new FormData(this);
+  for (let [key, value] of formData.entries()) {
+    console.log(key, value);
+  }
+});
     
     // التحقق من الحقول قبل الانتقال للصفحة الثانية
     nextBtn.addEventListener('click', function() {
