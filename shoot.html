@@ -917,12 +917,11 @@
   </div>
 
   <!-- Multi-step form -->
-  <form action="https://formsubmit.co/blancoagencyy1@gmail.com" method="POST" enctype="multipart/form-data">
-    <input type="hidden" name="_captcha" value="false">
-    <input type="hidden" name="_next" value="https://blanco-agency.github.io/blancoagency/th.html">
+  <form action="https://formspree.io/f/blancoagencyy1@gmail.com" method="POST" enctype="multipart/form-data">
     <input type="hidden" name="_subject" value="New Shoot Production Request">
-    <input type="hidden" name="_template" value="table">
-    <input type="hidden" name="_autoresponse" value="Thank you for your submission! We will contact you soon.">
+    <input type="hidden" name="_replyto" value="email">
+    <input type="hidden" name="_next" value="https://blanco-agency.github.io/blancoagency/th.html">
+    
     <div class="apply-container">
       <!-- Section 1: Photoshoot Details -->
       <div class="form-section active" id="section1">
@@ -946,43 +945,29 @@
           <div class="error-message">Please enter number of models</div>
         </div>
         
-        
-        
-        
-          <div class="form-group">
-            <label for="shoot-reference">Shoot reference</label>
-            
-            <div class="file-upload-container" id="uploadContainer">
-              <label class="file-upload-label">
-                <i class="fas fa-cloud-upload-alt"></i>
-                <span>Drop your files</span>
-                <span class="sub-text"></span>
-                <input type="file" id="file-upload" class="file-upload-input" name="shoot_reference_files[]" multiple>
-              </label>
-            </div>
-            
-            <!-- معاينة الملفات المرفوعة -->
-            <div class="uploaded-files" id="uploaded-files">
-              <h4>Uploaded Files:</h4>
-              <div id="file-list"></div>
-            </div>
-            
-            <!-- حقل النص -->
-            <textarea id="shoot-reference" name="shoot_reference_text" placeholder="Add any additional reference notes here..."></textarea>
-          </div>
-            
-            
+        <div class="form-group">
+          <label for="shoot-reference">Shoot reference</label>
           
-          <!-- معاينة الملفات المرفوعة -->
+          <div class="file-upload-container" id="uploadContainer">
+            <label class="file-upload-label">
+              <i class="fas fa-cloud-upload-alt"></i>
+              <span>Drop your files</span>
+              <span class="sub-text">(Max 10MB per file)</span>
+              <input type="file" id="file-upload" class="file-upload-input" name="shoot_reference_files" multiple>
+            </label>
+          </div>
+          
           <div class="uploaded-files" id="uploaded-files">
-            <h4 style="color: #f2ebc6; margin-bottom: 10px; font-size: 16px;">Uploaded Files:</h4>
+            <h4>Uploaded Files:</h4>
             <div id="file-list"></div>
           </div>
           
-          
+          <textarea id="shoot-reference" name="shoot_reference_text" placeholder="Add any additional reference notes here..."></textarea>
+        </div>
         
+            
         <hr style="border-color: #400000; margin: 30px 0;">
-        
+
         <div class="form-group">
           <label>Select your needed *</label>
           <div class="services-grid">
@@ -1069,7 +1054,6 @@
           <div style="display: flex;">
             <select name="country_code" style="flex: 0 0 100px; margin-right: 10px;" required>
               <option value="+20">EG +20</option>
-              <!-- يمكن إضافة المزيد من أكواد الدول -->
             </select>
             <input type="tel" name="phone" placeholder="Phone number" required style="flex: 1;">
           </div>
