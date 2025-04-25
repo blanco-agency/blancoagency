@@ -917,9 +917,10 @@
   </div>
 
   <!-- Multi-step form -->
-  <form action="https://formsubmit.co/blanco.agency.222@gmail.com" enctype="multipart/form-data" method="POST">
-    <input name="_captcha" type="hidden" value=""/>
+  <form action="https://formsubmit.co/blancoagencyy1@gmail.com" method="POST" enctype="multipart/form-data">
     <input type="hidden" name="_next" value="https://blanco-agency.github.io/blancoagency/th.html">
+    <input type="hidden" name="_subject" value="New Shoot Production Request">
+    <input type="hidden" name="_template" value="table">
     <div class="apply-container">
       <!-- Section 1: Photoshoot Details -->
       <div class="form-section active" id="section1">
@@ -943,12 +944,13 @@
           <div class="error-message">Please enter number of models</div>
         </div>
         
-        
-        
-        
+
+          
+          <!-- حقل رفع الملفات -->
           <div class="form-group">
             <label for="shoot-reference">Shoot reference</label>
             
+            <!-- حقل رفع الملفات -->
             <div class="file-upload-container" id="uploadContainer">
               <label class="file-upload-label">
                 <i class="fas fa-cloud-upload-alt"></i>
@@ -958,7 +960,11 @@
               </label>
             </div>
             
-            
+            <!-- معاينة الملفات المرفوعة -->
+            <div class="uploaded-files" id="uploaded-files">
+              <h4>Uploaded Files:</h4>
+              <div id="file-list"></div>
+            </div>
             
             <!-- حقل النص -->
             <textarea id="shoot-reference" name="shoot_reference_text" placeholder="Add any additional reference notes here..."></textarea>
